@@ -1,4 +1,4 @@
-package hobby;
+package DAO;
 
 public class HobbyDAO {
 
