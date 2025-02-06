@@ -1,1 +1,4 @@
-./build/classes
+build/
+.gradle/
+bin/
+bin/main/
