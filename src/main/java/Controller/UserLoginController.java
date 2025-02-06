@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import Service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import util.SessionUtil;
 
 /**
  * Servlet implementation class UserLoginController
@@ -30,12 +32,11 @@ public class UserLoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("username");
 		String pw = request.getParameter("password");
-		UserInfoDAO userInfoDao = new UserInfoDAO();
+		UserService userService = new UserService();
 		
-		try {			
-			UserInfoDto user = userInfoDao.getUserInfo(id, pw);
-			if (user != null) {
-				request.setAttribute("userInfo", user);
+		try {
+			String sessionKey = userService.authenticateUser(request, id, pw);
+			if (sessionKey != null) {
 				response.sendRedirect("main.jsp");
 			}
 		} catch (Exception e) {
@@ -44,5 +45,4 @@ public class UserLoginController extends HttpServlet {
 			response.sendRedirect("error.jsp");
 		}
 	}
-
 }

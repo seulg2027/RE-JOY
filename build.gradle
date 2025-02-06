@@ -11,11 +11,15 @@ repositories {
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1' // 서블릿 API
-    
-    compileOnly 'org.projectlombok:lombok:1.18.36' //lombok
+
+    // lombok
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
     
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0'
+
+    implementation 'org.mindrot:jbcrypt:0.4'
     
     implementation 'com.mysql:mysql-connector-j:8.0.33' // mysql connector
     implementation 'org.apache.taglibs:taglibs-standard-spec:1.2.5'

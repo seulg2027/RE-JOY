@@ -3,14 +3,13 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import DTO.UserInfoDto;
 import util.DBUtil;
 
 public class UserInfoDAO {
-	
-	public UserInfoDto getUserInfo(String id, String pw) throws Exception{
+
+	public UserInfoDto getUserInfo(String id, String pw) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -35,8 +34,6 @@ public class UserInfoDAO {
 			} else {
 				throw new IllegalArgumentException("찾는 사용자가 없습니다.");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		} finally {
 			DBUtil.close(con, pstmt, rs);
 		}
