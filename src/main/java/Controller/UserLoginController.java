@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
  * Servlet implementation class UserLoginController
  */
 @Slf4j
-@WebServlet("/user/login")
+@WebServlet("/userLogin")
 public class UserLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Logger logger = LoggerFactory.getLogger(UserLoginController.class);
@@ -33,12 +34,15 @@ public class UserLoginController extends HttpServlet {
 		
 		try {			
 			UserInfoDto user = userInfoDao.getUserInfo(id, pw);
-			request.setAttribute("userInfo", user);
+			if (user != null) {
+				request.setAttribute("userInfo", user);
+				response.sendRedirect("main.jsp");
+			}
 		} catch (Exception e) {
 			logger.debug("서버에 문제가 발생했습니다. : {}", e.getMessage());
+
+			response.sendRedirect("error.jsp");
 		}
-		
-		request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
 
 }

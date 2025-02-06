@@ -3,6 +3,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import DTO.UserInfoDto;
 import util.DBUtil;
@@ -17,7 +18,7 @@ public class UserInfoDAO {
 		
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from Users where user_id=? and pw=?");
+			pstmt = con.prepareStatement("select * from Users where id=? and pw=?");
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 			rs = pstmt.executeQuery();
@@ -31,12 +32,15 @@ public class UserInfoDAO {
 							rs.getInt("age"),
 							rs.getString("sex").charAt(0),
 							rs.getString("phone"));
-				return user;
+			} else {
+				throw new IllegalArgumentException("찾는 사용자가 없습니다.");
 			}
-			
-			throw new IllegalArgumentException("찾는 사용자가 없습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			DBUtil.close(con, pstmt, rs);
 		}
+
+		return user;
 	}
 }
