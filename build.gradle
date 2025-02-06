@@ -22,9 +22,12 @@ dependencies {
     implementation 'org.mindrot:jbcrypt:0.4'
     
     implementation 'com.mysql:mysql-connector-j:8.0.33' // mysql connector
+
+    // log4j
+    implementation 'org.slf4j:slf4j-api:1.7.31'
+    implementation 'ch.qos.logback:logback-classic:1.2.6'
+
     implementation 'org.apache.taglibs:taglibs-standard-spec:1.2.5'
-    implementation 'org.slf4j:slf4j-api:1.7.31' //
-    
     runtimeOnly 'org.apache.taglibs:taglibs-standard-impl:1.2.5' // taglibs impl
 }
 
