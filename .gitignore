@@ -3,4 +3,3 @@ build/
 bin/
 bin/main/
 
-src/main/webapp/META-INF/context.xml
