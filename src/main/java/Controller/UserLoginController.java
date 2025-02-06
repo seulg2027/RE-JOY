@@ -1,33 +1,44 @@
 package Controller;
 
+import java.io.IOException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import DAO.UserInfoDAO;
+import DTO.UserInfoDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Servlet implementation class UserLoginController
  */
+@Slf4j
 @WebServlet("/user/login")
 public class UserLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger logger = LoggerFactory.getLogger(UserLoginController.class);
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 로그인하기
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String id = request.getParameter("username");
+		String pw = request.getParameter("password");
+		UserInfoDAO userInfoDao = new UserInfoDAO();
+		
+		try {			
+			UserInfoDto user = userInfoDao.getUserInfo(id, pw);
+			request.setAttribute("userInfo", user);
+		} catch (Exception e) {
+			logger.debug("서버에 문제가 발생했습니다. : {}", e.getMessage());
+		}
+		
+		request.getRequestDispatcher("main.jsp").forward(request, response);
 	}
 
 }

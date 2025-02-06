@@ -19,6 +19,7 @@ dependencies {
     
     implementation 'com.mysql:mysql-connector-j:8.0.33' // mysql connector
     implementation 'org.apache.taglibs:taglibs-standard-spec:1.2.5'
+    implementation 'org.slf4j:slf4j-api:1.7.31' //
     
     runtimeOnly 'org.apache.taglibs:taglibs-standard-impl:1.2.5' // taglibs impl
 }
