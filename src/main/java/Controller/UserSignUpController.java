@@ -52,6 +52,7 @@ public class UserSignUpController extends HttpServlet {
 
         // 비밀번호 암호화
         String hashedPassword = PasswordUtil.hashPassword(password);
+        // DTO 생성 후 회원가입 처리
         
         UserInfoDto user = new UserInfoDto(0, name, id, hashedPassword, age, gender);
 
@@ -73,4 +74,4 @@ public class UserSignUpController extends HttpServlet {
         request.getRequestDispatcher("/signup.jsp").forward(request, response);
         }
     }
-
+}

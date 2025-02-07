@@ -179,33 +179,22 @@ input[type="text"], input[type="password"], input[type="number"] {
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
-				<!-- 닫기 버튼 -->
-				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> <a
-					href="main.jsp">홈</a> <a href="reservationList.jsp">취미 정보</a> <a
-					href="reservation.jsp">예약하기</a> <a href="dashboard.jsp">예약
-					조회</a> <a href="popularHobbies.jsp">인기 취미 생활</a>
+				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
+					<a href="centerList.jsp">홈</a>
+					<a href="reservationCheck.jsp">예약조회</a>
+					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
 		<h1 class="clickable"
-			onclick="window.location.href='main.jsp';">RE:JOY</h1>
+			onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
 		<div>
-			<% 
-				if ((String) session.getAttribute("userId") == null) {
-			%>
-				<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
-			<%
-				} else {
-			%>
-				<a href="logout" style="color: white; text-decoration: none;">로그아웃</a>
-			<%
-				}
-			%>
+			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
 		</div>
 	</header>
 
 	<div class="container">
 		<h2>회원가입</h2>
-		<form action="userSignup" method="post">
+		<form action="signupAction.jsp" method="post">
 			<input type="text" name="name" placeholder="이름" required> <input
 				type="number" name="age" placeholder="나이" required>
 			<div class="gender-options">

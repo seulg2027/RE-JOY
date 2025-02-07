@@ -1,10 +1,10 @@
 package DTO;
 
-import java.util.Date;
-
 import lombok.*;
 
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfoDto {
@@ -13,5 +13,6 @@ public class UserInfoDto {
 	private String id; // 실제 사용자 아이디
 	private String pw;
 	private int age;
-	private char sex;;
+	private char sex;
+	// private String phone;
 }

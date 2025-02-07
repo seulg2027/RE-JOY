@@ -3,7 +3,6 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import DTO.UserInfoDto;
 import util.DBUtil;
@@ -15,14 +14,14 @@ public class UserInfoDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		UserInfoDto user = null;
-
+		
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement("select * from Users where id=? and pw=?");
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 			rs = pstmt.executeQuery();
-
+			
 			if (rs.next()) {
 				user = new UserInfoDto(
 							rs.getInt("user_id"),
