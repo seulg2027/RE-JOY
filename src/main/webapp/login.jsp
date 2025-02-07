@@ -149,6 +149,8 @@ input[type="text"], input[type="password"] {
 		var menu = document.getElementById("navMenu");
 		menu.classList.toggle("show-menu");
 	}
+	
+	 
 </script>
 </head>
 <body>

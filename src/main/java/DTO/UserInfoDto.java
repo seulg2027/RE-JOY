@@ -13,6 +13,5 @@ public class UserInfoDto {
 	private String id; // 실제 사용자 아이디
 	private String pw;
 	private int age;
-	private char sex;
-	private String phone;
+	private char sex;;
 }

@@ -159,6 +159,19 @@ input[type="text"], input[type="password"], input[type="number"] {
       var menu = document.getElementById("navMenu");
       menu.classList.toggle("show-menu");
     }
+    
+ 	// 서버에서 전달된 메시지가 있으면 alert 창 띄우기
+	window.onload = function() {
+        var message = "<%= request.getAttribute("message") %>";
+        var redirect = "<%= request.getAttribute("redirect") %>";
+
+        if (message != "null") {
+            alert(message); // 메시지 출력
+            if (redirect != "null") {
+                window.location.href = redirect; // 페이지 이동
+            }
+        }
+    }
   </script>
 </head>
 <body>
@@ -196,9 +209,9 @@ input[type="text"], input[type="password"], input[type="number"] {
 			<input type="text" name="name" placeholder="이름" required> <input
 				type="number" name="age" placeholder="나이" required>
 			<div class="gender-options">
-				성별: <input type="radio" id="male" name="gender" value="male"
+				성별: <input type="radio" id="male" name="gender" value="M"
 					required> <label for="male">남성</label> <input type="radio"
-					id="female" name="gender" value="female" required> <label
+					id="female" name="gender" value="F" required> <label
 					for="female">여성</label>
 			</div>
 			<input type="text" name="username" placeholder="아이디" required>
