@@ -42,11 +42,15 @@ public class UserSignUpController extends HttpServlet {
         UserInfoDAO userinfoDAO = new UserInfoDAO();
 
         // 중복 아이디 확인
-        if (userinfoDAO.isUserIdExists(id)) {
-            request.setAttribute("error", "이미 존재하는 아이디입니다.");
-            request.getRequestDispatcher("/signup.jsp").forward(request, response);
-            return;
-        }
+        try {
+			if (userinfoDAO.isUserIdExists(id)) {
+			    request.setAttribute("error", "이미 존재하는 아이디입니다.");
+			    request.getRequestDispatcher("/signup.jsp").forward(request, response);
+			    return;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
         
         // 비밀번호 암호화
 

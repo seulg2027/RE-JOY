@@ -176,7 +176,17 @@ input[type="text"], input[type="password"], input[type="number"] {
 		<h1 class="clickable"
 			onclick="window.location.href='main.jsp';">RE:JOY</h1>
 		<div>
-			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+			<% 
+				if ((String) session.getAttribute("userId") == null) {
+			%>
+				<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+			<%
+				} else {
+			%>
+				<a href="logout" style="color: white; text-decoration: none;">로그아웃</a>
+			<%
+				}
+			%>
 		</div>
 	</header>
 

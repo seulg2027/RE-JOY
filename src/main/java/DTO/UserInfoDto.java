@@ -1,10 +1,10 @@
 package DTO;
 
+import java.util.Date;
+
 import lombok.*;
 
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfoDto {
