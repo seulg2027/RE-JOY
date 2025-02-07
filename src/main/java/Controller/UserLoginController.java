@@ -34,6 +34,11 @@ public class UserLoginController extends HttpServlet {
 	 * 로그인하기
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userId = UserService.checkUserLogin(request, response);
+		if (userId != null) {
+			response.sendRedirect("centerList.jsp");
+		}
+		
 		String id = request.getParameter("username");
 		String pw = request.getParameter("password");
 		UserService userService = new UserService();
@@ -42,6 +47,8 @@ public class UserLoginController extends HttpServlet {
 			String sessionKey = userService.authenticateUser(request, id, pw);
 			if (sessionKey != null) {
 				response.sendRedirect("centerList.jsp");
+			} else {
+				response.sendRedirect("error.jsp");
 			}
 		} catch (Exception e) {
 			logger.debug("서버에 문제가 발생했습니다. : {}", e.getMessage());
