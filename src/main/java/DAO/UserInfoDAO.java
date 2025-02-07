@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import DTO.UserInfoDto;
 import util.DBUtil;
+import util.PasswordUtil;
 
 public class UserInfoDAO {
 
@@ -17,9 +18,8 @@ public class UserInfoDAO {
 		
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from Users where id=? and pw=?");
+			pstmt = con.prepareStatement("select * from Users where id=?");
 			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -30,14 +30,18 @@ public class UserInfoDAO {
 							rs.getString("pw"),
 							rs.getInt("age"),
 							rs.getString("sex").charAt(0));
+				
+				if (PasswordUtil.checkPassword(pw, rs.getString("pw"))) {
+					return user;
+				} else {
+					return null;
+				}
 			} else {
 				throw new IllegalArgumentException("찾는 사용자가 없습니다.");
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rs);
 		}
-
-		return user;
 	}
 
 	public boolean registerUser(UserInfoDto user) throws Exception {

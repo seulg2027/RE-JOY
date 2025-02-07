@@ -194,7 +194,7 @@ input[type="text"], input[type="password"], input[type="number"] {
 
 	<div class="container">
 		<h2>회원가입</h2>
-		<form action="signupAction.jsp" method="post">
+		<form action="userSignup" method="post">
 			<input type="text" name="name" placeholder="이름" required> <input
 				type="number" name="age" placeholder="나이" required>
 			<div class="gender-options">
