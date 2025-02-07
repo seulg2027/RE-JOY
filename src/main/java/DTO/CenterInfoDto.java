@@ -18,6 +18,7 @@ public class CenterInfoDto {
 	private String category;
 	private String city;
 	private String disctrict;
+	private String price;
 	private String phone;
 	private String address;
 }
