@@ -1,8 +1,9 @@
 package util;
 
+import java.util.Base64;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import java.util.Base64;
 
 public class SessionUtil {
     private static final String SECRET_KEY = "1234567890123456"; // 16바이트 키
