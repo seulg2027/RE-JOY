@@ -13,7 +13,7 @@ public class UserService {
         UserInfoDto user = dao.getUserInfo(id, pw);
         if (user != null) {
             HttpSession session = request.getSession();
-            String key = SessionUtil.encrypt(user.getId() + user.getPhone());
+            String key = SessionUtil.encrypt(user.getId() + user.getPw());
             session.setAttribute("userId", key);
             request.setAttribute("userInfo", user);
             session.setMaxInactiveInterval(60 * 60); // 세션 만료 시간 : 60분
@@ -21,5 +21,10 @@ public class UserService {
         }
         return null;
     }
-
+    
+    public boolean checkUserLogin(HttpServletRequest request, String key) throws Exception {
+    	HttpSession session = request.getSession();
+    	
+    	return false;
+    }
 }

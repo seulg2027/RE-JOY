@@ -55,7 +55,7 @@ public class UserSignUpController extends HttpServlet {
         // 비밀번호 암호화
 
         // DTO 생성 후 회원가입 처리
-        UserInfoDto user = new UserInfoDto(0, name, id, password, age, gender, phone);
+        UserInfoDto user = new UserInfoDto(0, name, id, password, age, gender);
         
         boolean isRegistered = false;
 		try {

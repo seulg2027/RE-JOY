@@ -14,5 +14,5 @@ public class UserInfoDto {
 	private String pw;
 	private int age;
 	private char sex;
-	private String phone;
+	// private String phone;
 }

@@ -30,8 +30,7 @@ public class UserInfoDAO {
 							rs.getString("id"),
 							rs.getString("pw"),
 							rs.getInt("age"),
-							rs.getString("sex").charAt(0),
-							rs.getString("phone"));
+							rs.getString("sex").charAt(0));
 			} else {
 				throw new IllegalArgumentException("찾는 사용자가 없습니다.");
 			}
@@ -57,7 +56,6 @@ public class UserInfoDAO {
 			pstmt.setString(3, user.getPw());
 			pstmt.setInt(4, user.getAge());
 			pstmt.setString(5, String.valueOf(user.getSex()));
-			pstmt.setString(6, user.getPhone());
 
 			int result = pstmt.executeUpdate();
 

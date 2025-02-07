@@ -171,6 +171,14 @@ header {
 			<h1>⚠ 에러 발생</h1>
 			<p>죄송합니다. 요청을 처리하는 중 오류가 발생했습니다.</p>
 			<p>잠시 후 다시 시도해 주세요.</p>
+			<%
+				String error = (String) request.getAttribute("error");
+				if (error != null) {
+			%>
+				<p>⚠ 에러 메세지 : <p color="red"><%= error %></p></p>
+			<%
+				}
+			%>
 
 			<a href="main.jsp" class="error-btn">메인 페이지로 이동</a>
 		</div>

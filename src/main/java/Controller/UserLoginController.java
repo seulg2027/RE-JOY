@@ -21,6 +21,10 @@ import lombok.extern.slf4j.Slf4j;
 public class UserLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Logger logger = LoggerFactory.getLogger(UserLoginController.class);
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("error.jsp").forward(request, response);
+	}
 
 	/**
 	 * 로그인하기
@@ -37,8 +41,9 @@ public class UserLoginController extends HttpServlet {
 			}
 		} catch (Exception e) {
 			logger.debug("서버에 문제가 발생했습니다. : {}", e.getMessage());
-
-			response.sendRedirect("error.jsp");
+			request.setAttribute("error", e.getMessage());
+			
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
 }
