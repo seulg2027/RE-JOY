@@ -136,6 +136,10 @@ header {
 .error-btn:hover {
 	background-color: #3742d2;
 }
+
+.clickable {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -145,23 +149,22 @@ header {
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> <a
-					href="main.jsp">홈</a> <a href="reservationList.jsp">취미 정보</a> <a
-					href="reservation.jsp">예약하기</a> <a href="dashboard.jsp">예약
-					조회</a> <a href="popularHobbies.jsp">인기 취미 생활</a>
+					href="centerList.jsp">홈</a> <a href="reservationCheck.jsp">예약조회</a>
+				<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
-		<h1>RE:JOY</h1>
+		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
 		<div>
-			<% 
-				if ((String) session.getAttribute("userId") == null) {
-			%>
-				<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
 			<%
-				} else {
+			if ((String) session.getAttribute("userId") == null) {
 			%>
-				<a href="logout" style="color: white; text-decoration: none;">로그아웃</a>
+			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
 			<%
-				}
+			} else {
+			%>
+			<a href="logout" style="color: white; text-decoration: none;">로그아웃</a>
+			<%
+			}
 			%>
 		</div>
 	</header>
@@ -180,16 +183,16 @@ header {
 				}
 			%>
 
-			<a href="main.jsp" class="error-btn">메인 페이지로 이동</a>
+			<a href="centerList.jsp" class="error-btn">메인 페이지로 이동</a>
 		</div>
 	</div>
 
 	<script>
-        function toggleMenu() {
-            var menu = document.getElementById("navMenu");
-            menu.classList.toggle("show-menu");
-        }
-    </script>
+		function toggleMenu() {
+			var menu = document.getElementById("navMenu");
+			menu.classList.toggle("show-menu");
+		}
+	</script>
 
 </body>
 </html>
