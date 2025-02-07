@@ -213,13 +213,13 @@ select {
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> <a
-					href="index.jsp">홈</a> <a href="hobbyInfo.jsp">취미 정보</a> <a
-					href="reserve.jsp">예약하기</a> <a href="reservationCheck.jsp">예약
+					href="main.jsp">홈</a> <a href="reservationList.jsp">취미 정보</a> <a
+					href="reservation.jsp">예약하기</a> <a href="dashboard.jsp">예약
 					조회</a> <a href="popularHobbies.jsp">인기 취미 생활</a>
 			</nav>
 		</div>
 		<h1 class="clickable"
-			onclick="window.location.href='loginAction.jsp';">RE:JOY</h1>
+			onclick="window.location.href='main.jsp';">RE:JOY</h1>
 		<div>
 			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
 		</div>

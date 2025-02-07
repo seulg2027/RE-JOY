@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>RE:JOY - 회원가입</title>
+<title>에러 발생</title>
 <style>
-/* 문서 전체 높이 설정 */
+/* 기본 페이지 스타일 */
 html, body {
 	height: 100%;
 	margin: 0;
@@ -19,11 +19,11 @@ body {
 	background-color: #f3f4f6;
 	text-align: center;
 	width: 600px;
-	margin: 0 auto; /* 위 여백 없이 좌우 중앙 정렬 */
-	min-height: 100vh; /* 뷰포트 높이를 꽉 채움 */
-	border: 1px solid #ccc; /* 경계선 추가 */
-	border-radius: 10px; /* 둥근 모서리 */
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+	margin: 0 auto;
+	min-height: 100vh;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	display: flex;
 	flex-direction: column;
 }
@@ -62,7 +62,6 @@ header {
 	z-index: 999;
 }
 
-/* 닫기 버튼 스타일 */
 .close-btn {
 	position: absolute;
 	top: 10px;
@@ -87,12 +86,11 @@ header {
 	border-radius: 5px;
 }
 
-/* 메뉴 열릴 때 */
 .nav-menu.show-menu {
 	left: 0;
 }
 
-/* 남은 영역을 채우도록 flex 사용 */
+/* 컨테이너 스타일 */
 .container {
 	margin-top: 10px;
 	padding: 20px;
@@ -102,104 +100,78 @@ header {
 	flex: 1;
 }
 
-h2 {
-	margin-bottom: 20px;
+/* 에러 박스 스타일 */
+.error-box {
+	padding: 20px;
+	border-radius: 10px;
+	background-color: white;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.error-box h1 {
+	font-size: 24px;
+	color: #dc3545;
+	margin-bottom: 10px;
 }
 
-input[type="text"], input[type="password"], input[type="number"] {
-	width: 80%;
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+.error-box p {
+	font-size: 16px;
+	color: #333;
 }
 
-.gender-options {
-	width: 80%;
-	text-align: left;
-	margin: 10px 0;
-}
-
-.gender-options input[type="radio"] {
-	margin-left: 10px;
-}
-
-.button {
-	background-color: #495DDD;
-	color: white;
+/* 버튼 스타일 */
+.error-btn {
+	display: inline-block;
+	margin-top: 20px;
 	padding: 10px 20px;
 	font-size: 16px;
+	color: white;
+	background-color: #495DDD;
 	border: none;
-	cursor: pointer;
 	border-radius: 5px;
-	margin-top: 10px;
-}
-
-.link {
-	margin-top: 15px;
-}
-
-.link a {
-	color: #495DDD;
+	cursor: pointer;
 	text-decoration: none;
 }
 
-.clickable {
-	cursor: pointer;
+.error-btn:hover {
+	background-color: #3742d2;
 }
 </style>
-<script>
-    function toggleMenu() {
-      var menu = document.getElementById("navMenu");
-      menu.classList.toggle("show-menu");
-    }
-  </script>
 </head>
 <body>
+
 	<header>
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
-				<!-- 닫기 버튼 -->
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> <a
 					href="main.jsp">홈</a> <a href="reservationList.jsp">취미 정보</a> <a
 					href="reservation.jsp">예약하기</a> <a href="dashboard.jsp">예약
 					조회</a> <a href="popularHobbies.jsp">인기 취미 생활</a>
 			</nav>
 		</div>
-		<h1 class="clickable"
-			onclick="window.location.href='main.jsp';">RE:JOY</h1>
+		<h1>RE:JOY</h1>
 		<div>
 			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
 		</div>
 	</header>
 
 	<div class="container">
-		<h2>회원가입</h2>
-		<form action="signupAction.jsp" method="post">
-			<input type="text" name="name" placeholder="이름" required> <input
-				type="number" name="age" placeholder="나이" required>
-			<div class="gender-options">
-				성별: <input type="radio" id="male" name="gender" value="male"
-					required> <label for="male">남성</label> <input type="radio"
-					id="female" name="gender" value="female" required> <label
-					for="female">여성</label>
-			</div>
-			<input type="text" name="username" placeholder="아이디" required>
-			<input type="password" name="password" placeholder="비밀번호" required>
-			<input type="password" name="passwordConfirm" placeholder="비밀번호 확인"
-				required>
-			<button class="button" type="submit">회원가입</button>
-		</form>
-		<div class="link">
-			이미 계정이 있으신가요? <a href="login.jsp">로그인</a>
+		<div class="error-box">
+			<h1>⚠ 에러 발생</h1>
+			<p>죄송합니다. 요청을 처리하는 중 오류가 발생했습니다.</p>
+			<p>잠시 후 다시 시도해 주세요.</p>
+
+			<a href="main.jsp" class="error-btn">메인 페이지로 이동</a>
 		</div>
 	</div>
+
+	<script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("show-menu");
+        }
+    </script>
+
 </body>
 </html>
