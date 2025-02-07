@@ -4,7 +4,7 @@ import DAO.UserInfoDAO;
 import DTO.UserInfoDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import util.SessionUtil;
+import util.PasswordUtil;
 
 public class UserService {
 
@@ -13,11 +13,10 @@ public class UserService {
         UserInfoDto user = dao.getUserInfo(id, pw);
         if (user != null) {
             HttpSession session = request.getSession();
-            String key = SessionUtil.encrypt(user.getId() + user.getPw());
-            session.setAttribute("userId", key);
+            session.setAttribute("userId", user.getId());
             request.setAttribute("userInfo", user);
             session.setMaxInactiveInterval(60 * 60); // 세션 만료 시간 : 60분
-            return key;
+            return user.getId();
         }
         return null;
     }
