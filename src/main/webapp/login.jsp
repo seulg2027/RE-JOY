@@ -2,32 +2,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>RE:JOY - 로그인</title>
 <style>
-/* html과 body의 전체 높이 설정 */
+/* 문서 전체 스타일 */
 html, body {
+	font-family: 'Pretendard', sans-serif;
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
+/* 컨테이너 스타일 */
 body {
-	font-family: Arial, sans-serif;
 	background-color: #f3f4f6;
 	text-align: center;
 	width: 600px;
-	margin: 0 auto; /* 상단 여백 없이 좌우 중앙 정렬 */
-	min-height: 100vh; /* 뷰포트 높이만큼 채움 */
-	border: 1px solid #ccc; /* 경계선 */
-	border-radius: 10px; /* 둥근 모서리 */
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+	margin: 0 auto;
+	min-height: 100vh;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	display: flex;
 	flex-direction: column;
 }
 
+/* 헤더 스타일 */
 header {
 	background-color: #495DDD;
 	color: white;
@@ -38,6 +41,7 @@ header {
 	position: relative;
 }
 
+/* 네비게이션 메뉴 스타일 */
 .menu-container {
 	position: relative;
 }
@@ -62,7 +66,6 @@ header {
 	z-index: 999;
 }
 
-/* 닫기 버튼 스타일 */
 .close-btn {
 	position: absolute;
 	top: 10px;
@@ -87,12 +90,11 @@ header {
 	border-radius: 5px;
 }
 
-/* 메뉴 열릴 때 */
 .nav-menu.show-menu {
-	left: 450px;
+	left: 0;
 }
 
-/* 남은 영역을 채우기 위한 flex 설정 */
+/* 컨텐츠 스타일 */
 .container {
 	margin-top: 10px;
 	padding: 20px;
@@ -103,34 +105,62 @@ header {
 }
 
 h2 {
-	margin-bottom: 20px;
+	margin-bottom: 50px;
+	text-align: center;
+	margin-left: 20px;
+	font-size: 28px;
 }
 
-form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+/* 입력 필드 & 버튼 스타일 */
+.form-group {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px; 
+    margin-left: 40px; 
 }
 
-input[type="text"], input[type="password"] {
-	width: 80%;
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+.form-group label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
 }
 
+/* 입력 필드 밑줄 스타일 */
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    background-color: transparent;
+}
+
+/* 포커스 효과 */
+input[type="text"]:focus, 
+input[type="password"]:focus {
+    border-bottom: 2px solid #495DDD;
+}
+
+/* 버튼 스타일 */
 .button {
-	background-color: #495DDD;
-	color: white;
-	padding: 10px 20px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
-	border-radius: 5px;
-	margin-top: 10px;
+    width: 80%;
+    background-color: #495DDD;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 45px;
 }
 
+/* 회원가입 링크 */
 .link {
 	margin-top: 15px;
 }
@@ -140,6 +170,7 @@ input[type="text"], input[type="password"] {
 	text-decoration: none;
 }
 
+/* 클릭 가능한 요소 */
 .clickable {
 	cursor: pointer;
 }
@@ -149,8 +180,6 @@ input[type="text"], input[type="password"] {
 		var menu = document.getElementById("navMenu");
 		menu.classList.toggle("show-menu");
 	}
-	
-	 
 </script>
 </head>
 <body>
@@ -164,8 +193,7 @@ input[type="text"], input[type="password"] {
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
-		<h1 class="clickable"
-			onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
+		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
 		<div>
 			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
 		</div>
@@ -174,9 +202,17 @@ input[type="text"], input[type="password"] {
 	<div class="container">
 		<h2>로그인</h2>
 		<form action="userLogin" method="post">
-			<input type="text" name="username" placeholder="아이디" required>
-			<input type="password" name="password" placeholder="비밀번호" required>
-			<button class="button" type="submit">로그인</button>
+		    <div class="form-group">
+		        <label for="username">아이디</label>
+		        <input type="text" id="username" name="username" required>
+		    </div>
+
+		    <div class="form-group">
+		        <label for="password">비밀번호</label>
+		        <input type="password" id="password" name="password" required>
+		    </div>
+
+		    <button class="button" type="submit">로그인</button>
 		</form>
 		<div class="link">
 			아직 회원이 아니신가요? <a href="signup.jsp">회원가입</a>
