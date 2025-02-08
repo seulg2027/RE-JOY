@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -189,6 +190,24 @@ header {
 .clickable {
 	cursor: pointer;
 }
+
+      .timeslot-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .timeslot-btn {
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .timeslot-btn.disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
 </style>
 <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -268,38 +287,26 @@ header {
 			</p>
 		</div>
 
-		<!-- ✅ 날짜 선택 (캘린더) -->
-		<div class="section-title">
-			<img src="https://cdn-icons-png.flaticon.com/128/3176/3176367.png"
-				alt="달력 아이콘"> 날짜 선택
-		</div>
-		<div class="date-selector">
-			<input type="date" id="date-picker">
-		</div>
+		  <h2>${center.name} 예약</h2>
+    <p>주소: ${center.address}</p>
+    <p>전화번호: ${center.phone}</p>
 
-		<!-- ✅ 시간 선택 -->
-		<div class="section-title">
-			<img src="https://cdn-icons-png.flaticon.com/128/3064/3064197.png"
-				alt="시계 아이콘"> 시간 선택
-		</div>
-		<div class="time-selector">
-			<button>10:00</button>
-			<button>11:00</button>
-			<button>12:00</button>
-			<button>13:00</button>
-			<button>14:00</button>
-			<button>15:00</button>
-			<button>16:00</button>
-			<button>17:00</button>
-			<button>18:00</button>
-			<button>19:00</button>
-			<button>20:00</button>
-			<button>21:00</button>
-		</div>
+    <div class="timeslot-container">
+        <c:forEach var="schedule" items="${scheduleList}">
+            <form action="/RE-JOY/reserve" method="post" style="display: inline;">
+                <input type="hidden" name="scheduleId" value="${schedule.schedule_id}">
+                <button type="submit" 
+                        class="timeslot-btn ${schedule.is_booked == 'Y' ? 'disabled' : ''}" 
+                        ${schedule.is_booked == 'Y' ? 'disabled' : ''}>
+                    ${schedule.start_time}:00 ~ ${schedule.end_time}:00
+                </button>
+            </form>
+        </c:forEach>
+    </div>
 
-		<!-- ✅ 예약 버튼 -->
-		<button id="confirm-btn" class="confirm-btn">예약하기</button>
-	</div>
+    <c:if test="${not empty errorMessage}">
+        <p style="color: red;">${errorMessage}</p>
+    </c:if>
 
 </body>
 </html>
