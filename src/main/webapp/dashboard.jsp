@@ -198,7 +198,8 @@ header {
 </script>
 </head>
 <body>
-
+	
+	
 	<header>
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
@@ -211,8 +212,12 @@ header {
 		</div>
 		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
 		<div>
-			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
-		</div>
+            <% if ((String) session.getAttribute("userId") == null) { %>
+                <a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+            <% } else { %>
+                <a href="userLogout" style="color: white; text-decoration: none;">로그아웃</a>
+            <% } %>
+        </div>
 	</header>
 	<div class="container">
 		<h2>인기 취미생활</h2>
@@ -223,7 +228,7 @@ header {
 			
 				<p>
 					<iframe class="info-box"
-						src="http://localhost:5601/goto/0963d960-e514-11ef-ba83-5730c8e994f1"
+						src="http://192.168.1.227:5601/goto/0963d960-e514-11ef-ba83-5730c8e994f1"
 						height="400px" width="500px"></iframe>
 				</p>
 			

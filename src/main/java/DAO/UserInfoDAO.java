@@ -15,27 +15,27 @@ public class UserInfoDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		UserInfoDto user = null;
-		
+
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement("select * from Users where id=?");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
-				user = new UserInfoDto(
-							rs.getInt("user_id"),
-							rs.getString("name"),
-							rs.getString("id"),
-							rs.getString("pw"),
-							rs.getInt("age"),
-							rs.getString("sex").charAt(0));
-				
+				user = new UserInfoDto(rs.getInt("user_id"),
+									   rs.getString("name"),
+									   rs.getString("id"),
+									   rs.getString("pw"),
+									   rs.getInt("age"),
+									   rs.getString("sex").charAt(0));
+
 				if (PasswordUtil.checkPassword(pw, rs.getString("pw"))) {
 					return user;
 				} else {
-					return null;
+					throw new IllegalArgumentException("비밀번호가 틀렸습니다.");
 				}
+
 			} else {
 				throw new IllegalArgumentException("찾는 사용자가 없습니다.");
 			}

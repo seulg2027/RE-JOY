@@ -89,7 +89,7 @@ header {
 
 /* 메뉴 열릴 때 */
 .nav-menu.show-menu {
-	left: 0;
+	left: 450px;
 }
 
 /* 남은 영역을 채우기 위한 flex 설정 */

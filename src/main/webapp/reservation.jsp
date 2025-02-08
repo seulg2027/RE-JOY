@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% %>
 <!DOCTYPE html>
@@ -89,7 +90,7 @@ header {
 	border-radius: 5px;
 }
 
-/* 메뉴 열릴 때 위치 조정 (원하는 위치로 수정 가능) */
+/* 메뉴 열릴 때 */
 .nav-menu.show-menu {
 	left: 450px;
 }
@@ -210,6 +211,11 @@ header {
         }
 </style>
 <script>
+		function toggleMenu() {
+    		var menu = document.getElementById("navMenu");
+    		menu.classList.toggle("show-menu");
+		}
+
         document.addEventListener("DOMContentLoaded", function() {
             var timeButtons = document.querySelectorAll(".time-selector button");
             var selectedDate = "";
@@ -265,10 +271,19 @@ header {
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
-		<h1 class="clickable"
-			onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
+		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
 		<div>
+			<%
+			if ((String) session.getAttribute("userId") == null) {
+			%>
 			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+			<%
+			} else {
+			%>
+			<a href="userLogout" style="color: white; text-decoration: none;">로그아웃</a>
+			<%
+			}
+			%>
 		</div>
 	</header>
 	<div class="container">
@@ -279,9 +294,10 @@ header {
 			<h2>
 				<strong>클럽골프존</strong> / 서울 마포구
 			</h2>
-			<p>
+
+			<p></p>
 			<hr>
-			</p>
+
 			<p>
 				결제 가격: <strong>00,000</strong> 원
 			</p>

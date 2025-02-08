@@ -1,3 +1,18 @@
+<%--
+	<%@ page import="jakarta.servlet.http.HttpServlet" %>
+	<%@ page import="jakarta.servlet.http.HttpServletRequest" %>
+	<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
+
+
+<%
+    HttpSession currentSession = request.getSession(false);
+    if (currentSession == null || currentSession.getAttribute("userId") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%> 
+--%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -198,7 +213,7 @@ header {
 </script>
 </head>
 <body>
-
+	
 	<header>
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
@@ -212,34 +227,35 @@ header {
 		<h1 class="clickable"
 			onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
 		<div>
-			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
-		</div>
+            <% if ((String) session.getAttribute("userId") == null) { %>
+                <a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+            <% } else { %>
+                <a href="userLogout" style="color: white; text-decoration: none;">로그아웃</a>
+            <% } %>
+        </div>
 	</header>
 		<div class="container">
 		<h2>예약 조회</h2>
 
 		<!-- 예약 내역 출력 영역 -->
 		<div id="reservation-list">
-			<!-- 예제 예약 내역 -->
-			<div class="info-box">
-				<h2>
-					<strong>클럽골프존</strong> / 서울 마포구
-				</h2>
-				<p>
-					<strong>예약 날짜:</strong> 2025-02-10
-				</p>
-				<p>
-					<strong>예약 시간:</strong> 14:00
-				</p>
-				<p>
-					<strong>결제 금액:</strong> 50,000원
-				</p>
-			</div>
-
-			<!-- 예약이 없는 경우 -->
-			<div class="no-reservation">예약 내역이 없습니다.</div>
+			
 		</div>
 	</div>
 
 </body>
+<script type="text/javascript">
+	getReservationAll();
+	
+	function getReservationAll() {
+		const xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("reservation-list").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "reservationList");
+		xhttp.send();
+	}
+</script>
 </html>

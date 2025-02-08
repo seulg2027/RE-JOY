@@ -3,8 +3,8 @@ package Service;
 import DAO.UserInfoDAO;
 import DTO.UserInfoDto;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import util.PasswordUtil;
 
 public class UserService {
 
@@ -21,9 +21,16 @@ public class UserService {
         return null;
     }
     
-    public boolean checkUserLogin(HttpServletRequest request, String key) throws Exception {
-    	HttpSession session = request.getSession();
-    	
-    	return false;
+    public static String checkUserLogin(HttpServletRequest request, HttpServletResponse response) {
+    	try {
+        	String userId = (String) request.getSession().getAttribute("userId");
+            
+            if (userId == null) {
+            	return userId;
+            }
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+		return null;
     }
 }
