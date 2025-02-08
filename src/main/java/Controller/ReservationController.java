@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import jakarta.servlet.annotation.WebServlet;
-
-import DAO.ReservationDAO;
+import DAO.ReservDAO;
 
 @WebServlet("/reserve")
 public class ReservationController extends HttpServlet {
@@ -22,7 +21,7 @@ public class ReservationController extends HttpServlet {
 
 	        logger.info("Received reservation request - userId: {}, scheduleId: {}", userId, scheduleId);
 
-	        ReservationDAO dao = new ReservationDAO();
+	        ReservDAO dao = new ReservDAO();
 	        try {
 	            boolean success = dao.bookSchedule(userId, scheduleId);
 	            if (success) {

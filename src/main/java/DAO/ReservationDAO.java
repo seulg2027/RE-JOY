@@ -7,8 +7,7 @@ import DTO.UserInfoDto;
 import util.DBUtil;
 import util.PasswordUtil;
 import java.util.ArrayList;
-
-import DTO.ReservationDto;
+import DTO.ReservationDTO;
 import DTO.ScheduleWithCenterDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,3 +56,4 @@ public class ReservationDAO {
 
         return reservationAll;
     }
+}

@@ -1,5 +1,7 @@
 package DTO;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +15,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class ReservationDTO {
 	private int reservationId;
-	private String reservationTime;
+	private Date reservationTime;
 	private int userId;
 	private int scheduleId;
-	private int centerInfoId;
+	private int centerinfoId;
 }
