@@ -211,6 +211,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:foc
 </script>
 </head>
 <body>
+<<<<<<< Updated upstream
     <header>
         <div class="menu-container">
             <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
@@ -226,6 +227,24 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:foc
             <a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
         </div>
     </header>
+=======
+	<header>
+		<div class="menu-container">
+			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+			<nav id="navMenu" class="nav-menu">
+				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
+					<a href="centerList.jsp">홈</a>
+					<a href="reservationCheck">예약조회</a>
+					<a href="dashboard.jsp">통계</a>
+			</nav>
+		</div>
+		<h1 class="clickable"
+			onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
+		<div>
+			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+		</div>
+	</header>
+>>>>>>> Stashed changes
 
     <div class="container">
         <h2>회원 가입</h2>
