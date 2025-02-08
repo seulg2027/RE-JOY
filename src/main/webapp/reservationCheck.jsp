@@ -1,19 +1,5 @@
-<%--
-	<%@ page import="jakarta.servlet.http.HttpServlet" %>
-	<%@ page import="jakarta.servlet.http.HttpServletRequest" %>
-	<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
-
-
-<%
-    HttpSession currentSession = request.getSession(false);
-    if (currentSession == null || currentSession.getAttribute("userId") == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
-%> 
---%>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -236,25 +222,46 @@ header {
 	</header>
 		<div class="container">
 		<h2>예약 조회</h2>
+			<!-- 예약 내역 출력 영역 -->
+			<div id="reservation-list">
+				<c:if test="${empty reservationList}">
+					<p>예약 정보가 없습니다.</p>
+				</c:if>
 
-		<!-- 예약 내역 출력 영역 -->
-		<div id="reservation-list">
-			
-		</div>
+				<c:forEach var="reservation" items="${reservationList}">
+					<div class="info-box">
+						<h2>
+							<strong>${reservation.center_name}</strong> / ${reservation.center_address}
+						</h2>
+						<p>
+							<strong>예약 날짜:</strong> ${reservation.schedule_date}
+						</p>
+						<p>
+							<strong>예약 시간:</strong> ${reservation.start_time}:00
+						</p>
+						<p>
+							<strong>결제 금액:</strong> ${reservation.price}원
+						</p>
+					</div>
+				</c:forEach>
+			</div>
 	</div>
 
 </body>
 <script type="text/javascript">
-	getReservationAll();
+	document.addEventListener("DOMContentLoaded", function() {
+		//getReservationAll();
+	});
+
 	
 	function getReservationAll() {
 		const xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("reservation-list").innerHTML = this.responseText;
+				document.getElementById("reservation-check").innerHTML = this.responseText;
 			}
 		};
-		xhttp.open("GET", "reservationList");
+		xhttp.open("GET", "reservationCheck");
 		xhttp.send();
 	}
 </script>
