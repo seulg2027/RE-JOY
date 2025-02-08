@@ -205,7 +205,7 @@ select {
             citySelect.addEventListener("change", function(){
                 // 기존 옵션 초기화
                 districtSelect.innerHTML = "";
-                if(citySelect.value === "서울"){
+                if(citySelect.value === "서울시"){
                     var opt1 = document.createElement("option");
                     opt1.value = "강남구";
                     opt1.text = "강남구";
@@ -214,7 +214,7 @@ select {
                     opt2.value = "서초구";
                     opt2.text = "서초구";
                     districtSelect.appendChild(opt2);
-                } else if(citySelect.value === "부산"){
+                } else if(citySelect.value === "부산시"){
                     var opt1 = document.createElement("option");
                     opt1.value = "사상구";
                     opt1.text = "사상구";
@@ -238,7 +238,6 @@ select {
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
 					<a href="centerList.jsp">홈</a>
 					<a href="reservationCheck.jsp">예약조회</a>
-					<a href="reservation.jsp">예약하기</a>
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
@@ -258,8 +257,8 @@ select {
 		<form id="searchForm" action="/RE-JOY/center" method="get">
 			<div class="dropdown">
 				<select id="city" name="city">
-					<option value="서울">서울</option>
-					<option value="부산">부산</option>
+					<option value="서울">서울시</option>
+					<option value="부산">부산시</option>
 				</select> <select id="district" name="district">
 					<!-- 옵션은 JavaScript로 업데이트 됩니다 -->
 				</select>
@@ -283,11 +282,11 @@ select {
 			<c:forEach var="center" items="${centerList}">
 				<div class="list">
 					<div style="text-align: left;">
-						<h3>${center.name}</h3>
-						<p>${center.address}</p>
+						<h3>${center.center_name}</h3>
+						<p>${center.center_address}</p>
 					</div>
 					<button class="reserve-btn"
-						onclick="window.location.href='reservation.jsp?id=${center.centerId}'">
+						onclick="window.location.href='reservation.jsp?id=${center.center_id}'">
 						예약하기</button>
 				</div>
 			</c:forEach>

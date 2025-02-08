@@ -46,7 +46,7 @@ public class UserLoginController extends HttpServlet {
 		try {
 			String sessionKey = userService.authenticateUser(request, id, pw);
 			if (sessionKey != null) {
-				response.sendRedirect("centerList.jsp");
+				response.sendRedirect("center");
 			} else {
 				response.sendRedirect("error.jsp");
 			}

@@ -5,7 +5,6 @@ import DTO.UserInfoDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import util.PasswordUtil;
 
 public class UserService {
 
