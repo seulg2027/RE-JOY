@@ -178,57 +178,115 @@ select {
 .clickable {
 	cursor: pointer;
 }
+.spot {
+    color: #666; /* 색상 변경 (연한 회색) */
+    font-size: 0.9em; /* 살짝 작은 글자 크기 */
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    width: 48%;
+    border: 2px solid #ccc;  /* 테두리 색상 */
+    border-radius: 8px;  /* 둥근 모서리 */
+    background-color: white;  /* 배경색 */
+    color: #333;  /* 글자 색상 */
+    outline: none;
+    transition: all 0.3s ease-in-out; /* 부드러운 효과 */
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #495DDD;  /* 포커스 시 테두리 색 변경 */
+    box-shadow: 0 0 5px rgba(73, 93, 221, 0.5);  /* 은은한 그림자 효과 */
+}
+
+select option {
+    background-color: white;  /* 배경색 */
+    color: #333;  /* 텍스트 색상 */
+    padding: 10px;
+    font-size: 16px;
+}
+
 </style>
 <script>
-        function toggleMenu() {
-            var menu = document.getElementById("navMenu");
-            menu.classList.toggle("show-menu");
-        }
+    function toggleMenu() {
+        var menu = document.getElementById("navMenu");
+        menu.classList.toggle("show-menu");
+    }
 
-        // 카테고리 버튼 클릭 이벤트 처리 (필요시)
-        function selectCategory(event) {
-            var buttons = document.querySelectorAll(".category button");
-            buttons.forEach(button => button.classList.remove("active"));
-            event.target.classList.add("active");
-            console.log("선택된 카테고리:", event.target.innerText);
-        }
+    document.addEventListener("DOMContentLoaded", function() {
+        updateDistricts();
+        updateCategories();
+    });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            var buttons = document.querySelectorAll(".category button");
-            buttons.forEach(button => {
-                button.addEventListener("click", selectCategory);
-            });
+    const districtMap = {
+        "서울시": ["강남구", "서초구"],
+        "부산시": ["해운대구", "사상구"]
+    };
 
-            // 도시 선택에 따라 구 드롭다운 옵션 변경
-            var citySelect = document.getElementById("city");
-            var districtSelect = document.getElementById("district");
-            citySelect.addEventListener("change", function(){
-                // 기존 옵션 초기화
-                districtSelect.innerHTML = "";
-                if(citySelect.value === "서울시"){
-                    var opt1 = document.createElement("option");
-                    opt1.value = "강남구";
-                    opt1.text = "강남구";
-                    districtSelect.appendChild(opt1);
-                    var opt2 = document.createElement("option");
-                    opt2.value = "서초구";
-                    opt2.text = "서초구";
-                    districtSelect.appendChild(opt2);
-                } else if(citySelect.value === "부산시"){
-                    var opt1 = document.createElement("option");
-                    opt1.value = "사상구";
-                    opt1.text = "사상구";
-                    districtSelect.appendChild(opt1);
-                    var opt2 = document.createElement("option");
-                    opt2.value = "해운대구";
-                    opt2.text = "해운대구";
-                    districtSelect.appendChild(opt2);
+    const categoryMap = {
+        "강남구": ["골프", "테니스", "헬스", "요가", "배드민턴", "댄스스포츠", "볼링", "수영"],
+        "서초구": ["골프", "테니스", "헬스", "요가", "배드민턴", "댄스스포츠", "볼링", "수영"],
+        "해운대구": ["골프", "테니스", "헬스", "요가", "배드민턴", "댄스스포츠", "볼링", "수영"],
+        "사상구": ["골프", "테니스", "헬스", "요가", "배드민턴", "댄스스포츠", "볼링", "수영"]
+    };
+
+    function updateDistricts() {
+        const city = document.getElementById("city").value;
+        const districtSelect = document.getElementById("district");
+        const previousDistrict = districtSelect.value;
+        districtSelect.innerHTML = "";
+
+        if (districtMap[city]) {
+            districtMap[city].forEach(district => {
+                const option = document.createElement("option");
+                option.value = district;
+                option.text = district;
+                if (district === previousDistrict) {
+                    option.selected = true;
                 }
+                districtSelect.appendChild(option);
             });
-            // 페이지 로드시 초기 옵션 설정
-            citySelect.dispatchEvent(new Event("change"));
+        }
+
+        updateCategories();
+    }
+
+    function updateCategories() {
+        const district = document.getElementById("district").value;
+        const selectedCategory = document.getElementById("selectedCategory").value;
+
+        const buttons = document.querySelectorAll(".category-button");
+        buttons.forEach(button => {
+            const category = button.getAttribute("data-category");
+            if (categoryMap[district] && categoryMap[district].includes(category)) {
+                button.disabled = false;
+                button.style.opacity = "1";
+            } else {
+                button.disabled = true;
+                button.style.opacity = "0.5";
+            }
+
+            if (category === selectedCategory) {
+                button.classList.add("active");
+            } else {
+                button.classList.remove("active");
+            }
+
+            button.onclick = function() {
+                if (!button.disabled) {
+                    document.getElementById("selectedCategory").value = category;
+                    buttons.forEach(btn => btn.classList.remove("active"));
+                    button.classList.add("active");
+                }
+            };
         });
-    </script>
+    }
+</script>
+
+
+
 </head>
 <body>
 	<header>
@@ -241,7 +299,7 @@ select {
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
-		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
+		<h1 class="clickable" onclick="window.location.href='center?city=서울시&district=강남구&category=골프';">RE:JOY</h1>
 		<div>
 			<% if ((String) session.getAttribute("userId") == null) { %>
 			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
@@ -252,44 +310,58 @@ select {
 	</header>
 
 	<div class="container">
-		<h2>지역 설정</h2>
-		<!-- 컨텍스트 경로 포함한 폼 액션 -->
-		<form id="searchForm" action="/RE-JOY/center" method="get">
-			<div class="dropdown">
-				<select id="city" name="city">
-					<option value="서울">서울시</option>
-					<option value="부산">부산시</option>
-				</select> <select id="district" name="district">
-					<!-- 옵션은 JavaScript로 업데이트 됩니다 -->
-				</select>
+		<h2 style="text-align: left; font-size:20px; margin-left: 20px; margin-bottom: 35px;">예약할 센터 선택하기</h2>
+		<form action="center" method="get">
+		    <div class="dropdown">
+		        <select name="city" id="city" onchange="updateDistricts()">
+		            <option value="서울시" ${selectedCity == '서울시' ? 'selected' : ''}>서울시</option>
+		            <option value="부산시" ${selectedCity == '부산시' ? 'selected' : ''}>부산시</option>
+		        </select>
+		
+		        <select name="district" id="district" onchange="updateCategories()">
+		            <option value="강남구" ${selectedDistrict == '강남구' ? 'selected' : ''}>강남구</option>
+		            <option value="서초구" ${selectedDistrict == '서초구' ? 'selected' : ''}>서초구</option>
+		            <option value="해운대구" ${selectedDistrict == '해운대구' ? 'selected' : ''}>해운대구</option>
+		            <option value="사상구" ${selectedDistrict == '사상구' ? 'selected' : ''}>사상구</option>
+		        </select>
+		    </div>
+		
+			<div class="category" id="category-buttons">
+			    <button class="category-button" data-category="골프">골프</button>
+			    <button class="category-button" data-category="테니스">테니스</button>
+			    <button class="category-button" data-category="헬스">헬스</button>
+			    <button class="category-button" data-category="요가">요가</button>
+			    <button class="category-button" data-category="배드민턴">배드민턴</button>
+			    <button class="category-button" data-category="댄스스포츠">댄스스포츠</button>
+			    <button class="category-button" data-category="볼링">볼링</button>
+			    <button class="category-button" data-category="수영">수영</button>
 			</div>
-			<input type="submit" value="검색">
+			<input type="hidden" id="selectedCategory" name="category" value="${selectedCategory}">
+
 		</form>
 
-		<div class="category">
-			<button class="active">골프</button>
-			<button>볼링</button>
-			<button>수영</button>
-			<button>댄스스포츠</button>
-			<button>테니스</button>
-			<button>헬스</button>
-			<button>배드민턴</button>
-			<button>요가</button>
-		</div>
-
-		<!-- 센터 리스트 출력 영역 -->
 		<div class="list-container">
-			<c:forEach var="center" items="${centerList}">
-				<div class="list">
-					<div style="text-align: left;">
-						<h3>${center.center_name}</h3>
-						<p>${center.center_address}</p>
-					</div>
-					<button class="reserve-btn"
-						onclick="window.location.href='reservation.jsp?id=${center.center_id}'">
-						예약하기</button>
-				</div>
-			</c:forEach>
+		    <c:choose>
+		        <c:when test="${empty centerList}">
+		            <p style="text-align:center; font-size:18px; color: #666; font-weight: bold;">
+		                <strong>존재하지 않는 센터입니다.</strong>
+		            </p>		        
+		        </c:when>
+		        <c:otherwise>
+		            <c:forEach var="center" items="${centerList}">
+		                <div class="list">
+		                    <div style="text-align: left;">
+		                        <h3>${center.center_name} <span class="spot">${center.spot}</span></h3>
+		                        <p>${center.center_address}</p> ${center.phone}
+		                    </div>
+		                    <button class="reserve-btn"
+		                        onclick="window.location.href='reservation.jsp?id=${center.center_id}'">
+		                        예약하기
+		                    </button>
+		                </div>
+		            </c:forEach>
+		        </c:otherwise>
+		    </c:choose>
 		</div>
 	</div>
 </body>
