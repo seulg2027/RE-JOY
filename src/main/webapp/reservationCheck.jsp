@@ -3,19 +3,21 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>RE:JOY - 예약조회</title>
+<meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RE:JOY - 센터 목록</title>
 <style>
-html, body {
+html, body {.
+	font-family: 'Pretendard', sans-serif;
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'Pretendard', sans-serif;
 	background-color: #f3f4f6;
 	text-align: center;
 	/* 가운데 정렬: 좌우는 auto, 위 여백은 0 */
@@ -205,13 +207,12 @@ header {
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
-					<a href="centerList.jsp">홈</a>
+					<a href="center?city=서울시&district=강남구&category=골프">홈</a>
 					<a href="reservationCheck">예약조회</a>
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
-		<h1 class="clickable"
-			onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
+		<h1 class="clickable" onclick="window.location.href='center?city=서울시&district=강남구&category=골프';">RE:JOY</h1>
 		<div>
             <% if ((String) session.getAttribute("userId") == null) { %>
                 <a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
@@ -221,7 +222,7 @@ header {
         </div>
 	</header>
 		<div class="container">
-		<h2>예약 조회</h2>
+		<h2 style="text-align: left; font-size:22px; margin-left: 20px; margin-bottom: 35px;">예약 조회</h2>
 			<!-- 예약 내역 출력 영역 -->
 			<div id="reservation-list">
 				<c:if test="${empty reservationList}">
