@@ -5,17 +5,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>RE:JOY - 센터 목록</title>
 <style>
-/* 기존 스타일 그대로 적용 */
+
 html, body {
+	font-family: 'Pretendard', sans-serif;
 	width: 600px;
 	margin: 0 auto;
 	padding: 0;
-	font-family: Arial, sans-serif;
 	background-color: #f3f4f6;
 	text-align: center;
 	min-height: 100vh;
@@ -103,13 +104,11 @@ header {
 	margin-bottom: 15px;
 }
 
-select {
-	padding: 10px;
-	font-size: 16px;
-	width: 48%;
-}
 /* 카테고리 버튼 4개씩 2줄 정렬 */
 .category {
+    font-family: 'Pretendard', sans-serif;  /* 🚀 폰트 적용 */
+    font-weight: 500;  /* Medium (더 선명한 가독성) */
+    font-size: 16px;  /* 글자 크기 */
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
@@ -118,8 +117,9 @@ select {
 }
 
 .category button {
+    font-family: 'Pretendard', sans-serif;  /* 🚀 폰트 적용 */
+    font-size: 16px;  /* 글자 크기 */
 	padding: 10px 0;
-	font-size: 14px;
 	border: none;
 	border-radius: 5px;
 	background-color: #e0e0e0;
@@ -167,6 +167,8 @@ select {
 }
 
 .list .reserve-btn {
+    font-family: 'Pretendard', sans-serif;  /* 🚀 폰트 적용 */
+    font-size: 16px;  /* 글자 크기 */
 	padding: 10px 20px;
 	background-color: #3b4db4;
 	color: white;
@@ -184,15 +186,17 @@ select {
 }
 
 select {
+    font-family: 'Pretendard', sans-serif !important;  /* 🚀 폰트 적용 */
+    font-weight: 500;  /* Medium (더 선명한 가독성) */
+    font-size: 16px;  /* 글자 크기 */
     padding: 10px;
-    font-size: 16px;
     width: 48%;
-    border: 2px solid #ccc;  /* 테두리 색상 */
-    border-radius: 8px;  /* 둥근 모서리 */
-    background-color: white;  /* 배경색 */
-    color: #333;  /* 글자 색상 */
+    border: 2px solid #ccc;  
+    border-radius: 8px;  
+    background-color: white;  
+    color: #333;  
     outline: none;
-    transition: all 0.3s ease-in-out; /* 부드러운 효과 */
+    transition: all 0.3s ease-in-out;  
     cursor: pointer;
 }
 
@@ -202,13 +206,16 @@ select:focus {
 }
 
 select option {
-    background-color: white;  /* 배경색 */
-    color: #333;  /* 텍스트 색상 */
-    padding: 10px;
+    font-family: 'Pretendard', sans-serif !important;  /* 🚀 폰트 적용 */
+    font-weight: 400;  /* Regular */
     font-size: 16px;
+    padding: 10px;
+    background-color: white;
+    color: #333;
 }
 
 </style>
+</head>
 <script>
     function toggleMenu() {
         var menu = document.getElementById("navMenu");
@@ -285,9 +292,6 @@ select option {
     }
 </script>
 
-
-
-</head>
 <body>
 	<header>
 		<div class="menu-container">
@@ -310,7 +314,7 @@ select option {
 	</header>
 
 	<div class="container">
-		<h2 style="text-align: left; font-size:20px; margin-left: 20px; margin-bottom: 35px;">예약할 센터 선택하기</h2>
+		<h2 style="text-align: left; font-size:22px; margin-left: 20px; margin-bottom: 35px;">예약할 센터 선택하기</h2>
 		<form action="center" method="get">
 		    <div class="dropdown">
 		        <select name="city" id="city" onchange="updateDistricts()">
