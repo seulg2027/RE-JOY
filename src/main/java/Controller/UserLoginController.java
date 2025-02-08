@@ -34,11 +34,6 @@ public class UserLoginController extends HttpServlet {
 	 * 로그인하기
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = UserService.checkUserLogin(request, response);
-		if (userId != null) {
-			response.sendRedirect("centerList.jsp");
-		}
-		
 		String id = request.getParameter("username");
 		String pw = request.getParameter("password");
 		UserService userService = new UserService();

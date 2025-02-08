@@ -206,7 +206,7 @@ header {
 			<nav id="navMenu" class="nav-menu">
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
 					<a href="centerList.jsp">홈</a>
-					<a href="reservationCheck.jsp">예약조회</a>
+					<a href="reservationCheck">예약조회</a>
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
@@ -253,7 +253,6 @@ header {
 		//getReservationAll();
 	});
 
-	
 	function getReservationAll() {
 		const xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
