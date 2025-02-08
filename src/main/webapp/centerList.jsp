@@ -282,11 +282,11 @@ select {
 			<c:forEach var="center" items="${centerList}">
 				<div class="list">
 					<div style="text-align: left;">
-						<h3>${center.name}</h3>
-						<p>${center.address}</p>
+						<h3>${center.center_name}</h3>
+						<p>${center.center_address}</p>
 					</div>
 					<button class="reserve-btn"
-						onclick="window.location.href='reservation.jsp?id=${center.id}'">
+						onclick="window.location.href='reservation.jsp?id=${center.center_id}'">
 						예약하기</button>
 				</div>
 			</c:forEach>

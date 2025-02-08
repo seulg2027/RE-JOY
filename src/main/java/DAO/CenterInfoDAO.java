@@ -17,7 +17,7 @@ public class CenterInfoDAO {
 
     public List<CenterInfoDto> getCenterList() throws Exception {
         List<CenterInfoDto> centerList = new ArrayList<>();
-        String sql = "SELECT id, name, spot, category, city, district, address, phone, price FROM CenterInfo";
+        String sql = "SELECT center_id, center_name, spot, category, city, district, center_address, phone, price FROM center_info";
 
         try (Connection con = DBUtil.getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql);
@@ -27,13 +27,13 @@ public class CenterInfoDAO {
 
             while (rs.next()) {
                 CenterInfoDto center = new CenterInfoDto(
-                        rs.getInt("id"),  
-                        rs.getString("name"),
+                        rs.getInt("center_id"),  
+                        rs.getString("center_name"),
                         rs.getString("spot"),
                         rs.getString("category"),
                         rs.getString("city"),
                         rs.getString("district"),
-                        rs.getString("address"),
+                        rs.getString("center_address"),
                         rs.getString("phone"),
                         rs.getInt("price")
                 );
