@@ -198,7 +198,8 @@ header {
 </script>
 </head>
 <body>
-
+	
+	
 	<header>
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
@@ -206,13 +207,18 @@ header {
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
 					<a href="centerList.jsp">홈</a>
 					<a href="reservationCheck.jsp">예약조회</a>
+					<a href="reservation.jsp">예약하기</a>
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
 		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
 		<div>
-			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
-		</div>
+            <% if ((String) session.getAttribute("userId") == null) { %>
+                <a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+            <% } else { %>
+                <a href="userLogout" style="color: white; text-decoration: none;">로그아웃</a>
+            <% } %>
+        </div>
 	</header>
 	<div class="container">
 		<h2>인기 취미생활</h2>

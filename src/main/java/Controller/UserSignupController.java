@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import util.PasswordUtil;
 
 @WebServlet("/userSignup")
-public class UserSignUpController extends HttpServlet {
+public class UserSignupController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 

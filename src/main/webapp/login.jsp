@@ -89,7 +89,7 @@ header {
 
 /* 메뉴 열릴 때 */
 .nav-menu.show-menu {
-	left: 0;
+	left: 450px;
 }
 
 /* 남은 영역을 채우기 위한 flex 설정 */
@@ -161,6 +161,7 @@ input[type="text"], input[type="password"] {
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
 					<a href="centerList.jsp">홈</a>
 					<a href="reservationCheck.jsp">예약조회</a>
+					<a href="reservation.jsp">예약하기</a>
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
