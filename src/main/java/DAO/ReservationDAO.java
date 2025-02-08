@@ -7,7 +7,7 @@ import DTO.UserInfoDto;
 import util.DBUtil;
 import util.PasswordUtil;
 import java.util.ArrayList;
-import DTO.ReservationDTO;
+import DTO.ReservationDto;
 import DTO.ScheduleWithCenterDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

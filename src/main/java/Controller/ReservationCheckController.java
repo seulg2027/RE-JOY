@@ -1,7 +1,7 @@
 package Controller;
 
 import DAO.ReservationDAO;
-import DTO.ReservationDTO;
+import DTO.ReservationDto;
 import DTO.ScheduleWithCenterDto;
 import Service.UserService;
 import jakarta.servlet.annotation.WebServlet;

@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservationDTO {
+public class ReservationDto {
 	private int reservationId;
 	private Date reservationTime;
 	private int userId;
