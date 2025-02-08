@@ -229,7 +229,7 @@ header {
 			
 				<p>
 					<iframe class="info-box"
-						src="http://localhost:5601/goto/0963d960-e514-11ef-ba83-5730c8e994f1"
+						src="http://192.168.1.227:5601/goto/0963d960-e514-11ef-ba83-5730c8e994f1"
 						height="400px" width="500px"></iframe>
 				</p>
 			
