@@ -12,13 +12,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CenterInfoDto {
-	private int centerId;
+	private int id;
 	private String name;
 	private String spot;
 	private String category;
 	private String city;
 	private String district;
-	private String price;
-	private String phone;
 	private String address;
+	private String phone;
+	private int price;
 }

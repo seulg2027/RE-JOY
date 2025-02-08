@@ -5,41 +5,45 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import DTO.CenterInfoDto;
 import util.DBUtil;
 
 public class CenterInfoDAO {
+    private static final Logger logger = LoggerFactory.getLogger(CenterInfoDAO.class);
 
-	public List<CenterInfoDto> getCenterList(String city, String district) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<CenterInfoDto> centerList = new ArrayList<>();
+    public List<CenterInfoDto> getCenterList() throws Exception {
+        List<CenterInfoDto> centerList = new ArrayList<>();
+        String sql = "SELECT id, name, spot, category, city, district, address, phone, price FROM CenterInfo";
 
-		try {
-			con = DBUtil.getConnection();
-			String sql = "SELECT * FROM center_info WHERE city = ? AND district = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, city);
-			pstmt.setString(2, district);
-			rs = pstmt.executeQuery();
+        try (Connection con = DBUtil.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
 
-			while (rs.next()) {
-				CenterInfoDto center = new CenterInfoDto();
-				center.setCenterId(rs.getInt("centerId"));
-				center.setName(rs.getString("name"));
-				center.setSpot(rs.getString("spot"));
-				center.setCategory(rs.getString("category"));
-				center.setCity(rs.getString("city"));
-				center.setDistrict(rs.getString("district"));
-				center.setPhone(rs.getString("phone"));
-				center.setPrice(rs.getString("price"));
-				center.setAddress(rs.getString("address"));
-				centerList.add(center);
-			}
-		} finally {
-			DBUtil.close(con, pstmt, rs);
-		}
-		return centerList;
-	}
+            logger.info("Executing query: {}", sql);
+
+            while (rs.next()) {
+                CenterInfoDto center = new CenterInfoDto(
+                        rs.getInt("id"),  
+                        rs.getString("name"),
+                        rs.getString("spot"),
+                        rs.getString("category"),
+                        rs.getString("city"),
+                        rs.getString("district"),
+                        rs.getString("address"),
+                        rs.getString("phone"),
+                        rs.getInt("price")
+                );
+                System.out.println(center);
+                centerList.add(center);
+            }
+        } catch (Exception e) {
+            logger.error("Error fetching center list", e);
+            throw e;  // 예외를 컨트롤러로 전달
+        }
+        return centerList;
+    }
 }
