@@ -28,6 +28,7 @@ public class ReservationDAO {
 					+ "\tINNER JOIN Schedules S\n" + "\tON S.schedule_id = R.schedule_id\n"
 					+ "\tINNER JOIN center_info C\n" + "\tON C.center_id = R.center_id\n"
 					+ "WHERE U.id = ? ORDER BY reservation_time DESC";
+        System.out.println("Executing SQL: " + sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -47,7 +48,7 @@ public class ReservationDAO {
 	}
 
 	// 예약 가능 여부 확인
-	public boolean checkAvailability(int centerId, String reservationDate, int startTime) throws Exception {
+	public boolean checkAvailability(int centerId, String reservationDate, String reservationTime) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -57,10 +58,11 @@ public class ReservationDAO {
 			con = DBUtil.getConnection();
 			String sql = "SELECT COUNT(*) FROM Schedules "
 					+ "WHERE center_id = ? AND schedule_date = ? AND start_time = ? AND is_booked = 'Y'";
+        System.out.println("Executing SQL: " + sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, centerId);
 			pstmt.setString(2, reservationDate);
-			pstmt.setInt(3, startTime);
+			pstmt.setString(3, reservationTime);
 			rs = pstmt.executeQuery();
 
 			if (rs.next() && rs.getInt(1) == 0) {
@@ -80,6 +82,7 @@ public class ReservationDAO {
 		try {
 			con = DBUtil.getConnection();
 			String sql = "INSERT INTO Reservation (user_id, schedule_id, center_id) VALUES (?, ?, ?)";
+        System.out.println("Executing SQL: " + sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, scheduleId);
@@ -88,6 +91,11 @@ public class ReservationDAO {
 		} finally {
 			DBUtil.close(con, pstmt, null);
 		}
+	}
+
+	public boolean insertReservation(int userId, int centerId, String reservationDate, String reservationTime) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

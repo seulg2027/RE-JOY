@@ -17,6 +17,6 @@ public class ReservationDto {
 	private int reservation_id;
 	private Date reservation_time;
 	private int user_id;
-	private int schedule_od;
+	private int schedule_id;
 	private int center_id;
 }

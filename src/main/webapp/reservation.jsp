@@ -1,5 +1,12 @@
+<%
+    if (session.getAttribute("userId") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -190,27 +197,31 @@ header {
 .clickable {
 	cursor: pointer;
 }
- .timeslot-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .timeslot-btn {
-            padding: 10px;
-            background-color: #e0e0e0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .timeslot-btn.disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-           .time-selector button.disabled {
-            background-color: #ccc;
-            pointer-events: none;
-        }
+
+.timeslot-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.timeslot-btn {
+	padding: 10px;
+	background-color: #e0e0e0;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.timeslot-btn.disabled {
+	background-color: #cccccc;
+	cursor: not-allowed;
+}
+
+.time-selector button.disabled {
+	background-color: #ccc;
+	pointer-events: none;
+}
 </style>
 <script>
 		function toggleMenu() {
@@ -233,7 +244,20 @@ header {
             var datePicker = document.getElementById("date-picker");
             datePicker.setAttribute("min", minDate);
             datePicker.setAttribute("value", minDate); // 기본값을 오늘 날짜로 설정
+			
+            function selectTime(time) {
+                
+            	const selectedTimeInput = document.getElementById("selected-time");
+                
+                selectedTimeInput.value = time;
 
+                const buttons = document.querySelectorAll(".time-selector button");
+                buttons.forEach(btn => btn.classList.remove("active"));
+
+                event.target.classList.add("active");
+                document.getElementById("confirm-btn").disabled = false;
+            }
+            
             // ✅ 날짜 선택
             datePicker.addEventListener("change", function() {
                 selectedDate = this.value;
@@ -261,6 +285,7 @@ header {
         });
         
         // ✅ 시간 선택
+        <%--
         function selectTime(time) {
             document.getElementById("selected-time").value = time; // 시간 값을 hidden input에 설정
             const buttons = document.querySelectorAll(".time-selector button");
@@ -268,6 +293,21 @@ header {
             event.target.classList.add("active");
             document.getElementById("confirm-btn").disabled = false; // 예약 버튼 활성화
         }
+        --%>
+        function selectTime(time) {
+            
+        	const selectedTimeInput = document.getElementById("selected-time");
+            
+            selectedTimeInput.value = time;
+
+            const buttons = document.querySelectorAll(".time-selector button");
+            buttons.forEach(btn => btn.classList.remove("active"));
+
+            event.target.classList.add("active");
+            document.getElementById("confirm-btn").disabled = false;
+        }
+
+
     </script>
 </head>
 <body>
@@ -276,10 +316,9 @@ header {
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
-				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
-					<a href="centerList.jsp">홈</a>
-					<a href="reservationCheck">예약조회</a>
-					<a href="dashboard.jsp">통계</a>
+				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> <a
+					href="centerList.jsp">홈</a> <a href="reservationCheck">예약조회</a> <a
+					href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
 		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
@@ -299,61 +338,84 @@ header {
 	</header>
 	<div class="container">
 		<h2>예약 하기</h2>
-<form action="reservationController" method="get">
-    <input type="hidden" name="center_id" value="${centerInfo.center_id}">
-<%
-    String centerIdStr = request.getParameter("id");
-    System.out.println("center_id: " + centerIdStr); // 로그 확인
-    int centerId = Integer.parseInt(centerIdStr);
-%>
-    <!-- ✅ 가게 정보 -->
-     <div class="info-box">
-        <p>센터 이름: ${centerInfo.center_name}</p>
-        <p>지역: ${centerInfo.city} ${centerInfo.district}</p>
-        <p>결제 금액: ${centerInfo.price}원</p>
-    </div>
-<!-- ✅ 날짜 선택 (캘린더) -->
-       <div class="section-title">
-			<img src="https://cdn-icons-png.flaticon.com/128/3176/3176367.png"
-				alt="달력 아이콘"> 날짜 선택
-		</div>
-		<div class="date-selector">
-            <input type="date" id="date" name="date" required>
-        </div>
-        
-<!-- ✅ 시간 선택 -->
-		<div class="section-title">
-			<img src="https://cdn-icons-png.flaticon.com/128/3064/3064197.png"
-				alt="시계 아이콘"> 시간 선택
-		</div>
-        <div class="time-selector">
-            <button type="button" onclick="selectTime(10)" name="time" value="10">10:00</button>
-            <button type="button" onclick="selectTime(11)" name="time" value="11">11:00</button>
-            <button type="button" onclick="selectTime(12)" name="time" value="12">12:00</button>
-            <button type="button" onclick="selectTime(13)" name="time" value="13">13:00</button>
-            <button type="button" onclick="selectTime(14)" name="time" value="14">14:00</button>
-            <button type="button" onclick="selectTime(15)" name="time" value="15">15:00</button>
-            <button type="button" onclick="selectTime(16)" name="time" value="16">16:00</button>
-            <button type="button" onclick="selectTime(17)" name="time" value="17">17:00</button>
-            <button type="button" onclick="selectTime(18)" name="time" value="18">18:00</button>
-            <button type="button" onclick="selectTime(19)" name="time" value="19">19:00</button>
-            <button type="button" onclick="selectTime(20)" name="time" value="20"}>20:00</button>
-            <button type="button" onclick="selectTime(21)" name="time" value="21">21:00</button>
-        </div>
-      <div class="time-selector">
-            <c:forEach var="timeSlot" items="${timeSlots}">
-                <button type="button" 
-                        class="${timeSlot.reserved ? 'disabled' : ''}" 
-                        onclick="selectTime(this, '${timeSlot.time}')">
-                    ${timeSlot.time}:00 ${timeSlot.reserved ? '예약정원 1/1' : ''}
-                </button>
-            </c:forEach>
-        </div>
-        <div>
-            <button type="submit" class="confirm-btn" disabled>예약하기</button>
-        </div>
-    </form>
-        </div>
-        
+		<form action="reservation" method="post">
+			<input type="hidden" name="center_id" value="${centerInfo.center_id}">
+    		<input type="hidden" id="selected-time" name="reservationTime">
+			<%
+			String centerIdStr = request.getParameter("id");
+			System.out.println("center_id: " + centerIdStr); // 로그 확인
+			int centerId = Integer.parseInt(centerIdStr);
+			%>
+			<!-- ✅ 가게 정보 -->
+			<div class="info-box">
+    <c:if test="${empty centerInfo}">
+        <p style="color: red;">센터 정보를 불러올 수 없습니다.</p>
+    </c:if>
+    <p>디버깅: ${centerInfo}</p>
+				<p>센터 이름: ${requestScope.centerInfo.center_name}</p>
+				<p>지역: ${requestScope.centerInfo.city} ${centerInfo.district}</p>
+				<p>결제 금액: ${requestScope.centerInfo.price}원</p>
+			</div>
+			<!-- ✅ 날짜 선택 (캘린더) -->
+			<div class="section-title">
+				<img src="https://cdn-icons-png.flaticon.com/128/3176/3176367.png"
+					alt="달력 아이콘"> 날짜 선택
+			</div>
+			<div class="date-selector">
+				<input type="date" id="date" name="reservationDate" required>
+			</div>
+			
+			<!-- ✅ 시간 선택 -->
+			<div class="section-title">
+				<img src="https://cdn-icons-png.flaticon.com/128/3064/3064197.png"
+					alt="시계 아이콘"> 시간 선택
+			</div>
+			
+			 <div class="time-selector">
+				<button type="button" onclick="selectTime(10)" name="time"
+					value="10">10:00</button>
+				<button type="button" onclick="selectTime(11)" name="time"
+					value="11">11:00</button>
+				<button type="button" onclick="selectTime(12)" name="time"
+					value="12">12:00</button>
+				<button type="button" onclick="selectTime(13)" name="time"
+					value="13">13:00</button>
+				<button type="button" onclick="selectTime(14)" name="time"
+					value="14">14:00</button>
+				<button type="button" onclick="selectTime(15)" name="time"
+					value="15">15:00</button>
+				<button type="button" onclick="selectTime(16)" name="time"
+					value="16">16:00</button>
+				<button type="button" onclick="selectTime(17)" name="time"
+					value="17">17:00</button>
+				<button type="button" onclick="selectTime(18)" name="time"
+					value="18">18:00</button>
+				<button type="button" onclick="selectTime(19)" name="time"
+					value="19">19:00</button>
+				<button type="button" onclick="selectTime(20)" name="time"
+					value="20">20:00</button>
+				<button type="button" onclick="selectTime(21)" name="time"
+					value="21">21:00</button>
+			</div> 
+			
+			
+			
+			<%-- <div class="time-selector">
+				<c:forEach var="timeSlot" items="${timeSlots}">
+					<button type="button"
+						class="${timeSlot.reserved ? 'disabled' : ''}"
+						onclick="selectTime(this, '${timeSlot.time}')">
+						${timeSlot.time}:00 ${timeSlot.reserved ? '예약정원 1/1' : ''}</button>
+				</c:forEach>
+			</div>  --%>
+			
+		
+			
+			<div>
+				<button id="confirm-btn" type="submit" class="confirm-btn" disabled>예약하기</button>
+			</div>
+		</form>
+	</div>
+
 </body>
 </html>

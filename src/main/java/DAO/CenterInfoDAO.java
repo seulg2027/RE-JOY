@@ -73,11 +73,13 @@ public class CenterInfoDAO {
         try {
         	String sql = "SELECT center_id, center_name, city, district, price FROM center_info WHERE center_id = ?";
             pstmt = con.prepareStatement(sql);
+            System.out.println("Fetching Center Info for ID: " + centerId);
             pstmt.setInt(1, centerId);
             System.out.println("Executing query: " + pstmt);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
+                System.out.println("Data Retrieved: " + rs.getString("center_name"));
             	System.out.println("Data Retrieved: " + rs.getString("center_name"));
                 CenterInfoDto centerInfo = new CenterInfoDto();
                 centerInfo.setCenter_id(rs.getInt("center_id"));
@@ -87,6 +89,7 @@ public class CenterInfoDAO {
                 centerInfo.setPrice(rs.getInt("price"));
                 return centerInfo;
             } else {
+                System.out.println("No data found for Center ID: " + centerId);
                 throw new Exception("Center not found for ID: " + centerId);
             }
         } finally {
