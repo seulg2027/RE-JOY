@@ -26,7 +26,7 @@ public class ReservationCheckController extends HttpServlet {
             response.sendRedirect("login.jsp");
             return;
         }
-        logger.info("user : {}", userId);
+        // logger.info("user : {}", userId);
         ReservationDAO reservationDAO = new ReservationDAO();
 
         try {
@@ -34,7 +34,8 @@ public class ReservationCheckController extends HttpServlet {
             request.setAttribute("reservationList", reservationList);
             request.getRequestDispatcher("reservationCheck.jsp").forward(request, response);
         } catch (Exception e) {
-            e.printStackTrace();
+            request.setAttribute("error", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 }

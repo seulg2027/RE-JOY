@@ -23,7 +23,6 @@ import util.SessionUtil;
 @Slf4j
 @WebServlet("/userLogin")
 public class UserLoginController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 	Logger logger = LoggerFactory.getLogger(UserLoginController.class);
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,12 +38,7 @@ public class UserLoginController extends HttpServlet {
 		UserService userService = new UserService();
 		
 		try {
-			String sessionKey = userService.authenticateUser(request, id, pw);
-			if (sessionKey != null) {
-				response.sendRedirect("center");
-			} else {
-				response.sendRedirect("error.jsp");
-			}
+			userService.authenticateUser(request, response, id, pw);
 		} catch (Exception e) {
 			logger.debug("서버에 문제가 발생했습니다. : {}", e.getMessage());
 			request.setAttribute("error", e.getMessage());
