@@ -6,6 +6,7 @@
 |:-:|:-:|:-:|:-:|
 |김민성<br/>[@minsung159357](https://github.com/minsung159357)|SeulGi_LEE<br/>[@seulg2027](https://github.com/seulg2027)|HanJH<br/>[@letsgojh0810](https://github.com/letsgojh0810)|구민지<br/>[@minjee83](https://github.com/minjee83)|
 
+
 ## 2. Project 개요 및 주제
 
 💡 기간 : `2025.02.03` ~ `2025.02.10`
@@ -22,6 +23,7 @@
 💡 데이터 출처 : [취미 선호도 데이터](https://www.kosis.kr/index/index.do)를 CSV 파일로 받아서 연령대별, 성별별로 선호도 분석 📈
 
 
+
 ## 3. Stack & Tools
 
 | Elements       | Tools                        | 설명                         |
@@ -32,13 +34,23 @@
 | WEB System  | <img src="https://img.shields.io/badge/servlet-000000?style=flat-square&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=flat-square&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css&logoColor=white"> | 웹 서비스 개발 도구 |
 
 
+
 ## 4. 기능 소개 및 구현 결과
 
 ### 🔧 주요 기능
+<img src="https://github.com/user-attachments/assets/59554f8e-5f3a-4a31-a1b9-ade4bcf9e29b" width="600" height="350"/>
 
 ### 📢 구현 결과
+|<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/5ac732a6-adea-4ec2-ab23-316fd29e0cbb" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" height="400"/>|
+|:-:|:-:|:-:|
+|회원가입|로그인|센터리스트조회|
+||<img src="https://github.com/user-attachments/assets/6d0a9fc6-42cf-4164-ba7e-56f84ddebc16" width="300" height="400"/>|
+|예약|예약내역조회|
+
 
 ## 5. 데이터베이스
+
+![image](https://github.com/user-attachments/assets/1947738e-2a37-4c29-8fbc-7eddf260b600)
 
 4개의 테이블을 만들어 데이터베이스를 제작하였다. [SQL DDL문 보러가기](./sql/ddl.sql)
 
@@ -78,6 +90,15 @@ END;
 
 </details>
 
+
 ## 6. Trouble Shooting
 
+
 ## 7. Team member's Review
+### 💡 구민지
+
+### 💡 한정현
+
+### 💡 이슬기
+
+### 💡 김민성
