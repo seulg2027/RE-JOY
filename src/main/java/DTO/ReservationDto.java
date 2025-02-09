@@ -14,9 +14,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReservationDto {
-	private int reservationId;
-	private Date reservationTime;
-	private int userId;
-	private int scheduleId;
-	private int centerinfoId;
+	private int reservation_id;
+	private Date reservation_time;
+	private int user_id;
+	private int schedule_od;
+	private int center_id;
 }
