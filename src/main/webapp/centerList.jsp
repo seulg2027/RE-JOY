@@ -290,6 +290,7 @@ select option {
             };
         });
     }
+
 </script>
 
 <body>
@@ -358,10 +359,10 @@ select option {
 		                        <h3>${center.center_name} <span class="spot">${center.spot}</span></h3>
 		                        <p>${center.center_address}</p> ${center.phone}
 		                    </div>
-		                    <button class="reserve-btn"
-		                        onclick="window.location.href='reservation.jsp?id=${center.center_id}'">
-		                        예약하기
-		                    </button>
+							<form action="reservation" method="post">
+							    <input type="hidden" name="center_id" value="${center.center_id}">
+							    <button type="submit" class="reserve-btn">예약하기</button>
+							</form>
 		                </div>
 		            </c:forEach>
 		        </c:otherwise>
@@ -370,3 +371,4 @@ select option {
 	</div>
 </body>
 </html>
+ 

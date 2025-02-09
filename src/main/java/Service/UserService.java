@@ -14,6 +14,7 @@ public class UserService {
 
         if (user != null) {
             HttpSession session = request.getSession();
+            session.setAttribute("sessionId", user.getUserId());
             session.setAttribute("userId", user.getId());
             request.setAttribute("userInfo", user);
             session.setMaxInactiveInterval(60 * 60); // 세션 만료 시간 : 60분

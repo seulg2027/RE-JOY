@@ -47,55 +47,54 @@ public class ReservationDAO {
 		return reservationAll;
 	}
 
-	// 예약 가능 여부 확인
-	public boolean checkAvailability(int centerId, String reservationDate, String reservationTime) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		boolean isAvailable = false;
+    public String getScheduleId(int reservationTime) throws Exception {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String scheduleId = null;
 
-		try {
-			con = DBUtil.getConnection();
-			String sql = "SELECT COUNT(*) FROM Schedules "
-					+ "WHERE center_id = ? AND schedule_date = ? AND start_time = ? AND is_booked = 'Y'";
-        System.out.println("Executing SQL: " + sql);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, centerId);
-			pstmt.setString(2, reservationDate);
-			pstmt.setString(3, reservationTime);
-			rs = pstmt.executeQuery();
+        try {
+            con = DBUtil.getConnection();
+            String sql = "SELECT schedule_id FROM Schedules WHERE start_time = ?";
+            System.out.println("Executing SQL: " + sql);
+            
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, reservationTime);
+            rs = pstmt.executeQuery();
 
-			if (rs.next() && rs.getInt(1) == 0) {
-				isAvailable = true;
-			}
-		} finally {
-			DBUtil.close(con, pstmt, rs);
-		}
-		return isAvailable;
-	}
+            if (rs.next()) {
+                scheduleId = rs.getString("schedule_id");
+            }
+        } finally {
+            DBUtil.close(con, pstmt, rs);
+        }
+        System.out.println(scheduleId);
+        return scheduleId;
+    }
 
-	// 예약 정보 저장
-	public void bookReservation(String userId, int centerId, String scheduleId) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
+    public void bookReservation(int userId, int centerId, String reservationDate, int reservationTime) throws Exception {
+        Connection con = null;
+        PreparedStatement pstmt = null;
 
-		try {
-			con = DBUtil.getConnection();
-			String sql = "INSERT INTO Reservation (user_id, schedule_id, center_id) VALUES (?, ?, ?)";
-        System.out.println("Executing SQL: " + sql);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, userId);
-			pstmt.setString(2, scheduleId);
-			pstmt.setInt(3, centerId);
-			pstmt.executeUpdate();
-		} finally {
-			DBUtil.close(con, pstmt, null);
-		}
-	}
+        try {
+            String scheduleId = getScheduleId(reservationTime);
+            if (scheduleId == null) {
+                throw new Exception("선택한 시간에 예약 가능한 스케줄이 없습니다.");
+            }
 
-	public boolean insertReservation(int userId, int centerId, String reservationDate, String reservationTime) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+            con = DBUtil.getConnection();
+            String sql = "INSERT INTO Reservation (user_id, schedule_id, center_id, reservation_time) VALUES (?, ?, ?, ?)";
+            System.out.println("Executing SQL: " + sql);
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, scheduleId);
+            pstmt.setInt(3, centerId);
+            pstmt.setString(4, reservationDate);
+            pstmt.executeUpdate();
+        } finally {
+            DBUtil.close(con, pstmt, null);
+        }
+    }
 
 }
