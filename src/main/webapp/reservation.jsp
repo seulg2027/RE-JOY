@@ -245,10 +245,12 @@ header {
 	    <input type="hidden" id="selected-time" name="reservationTime">
 	
 	    <!-- :흰색_확인_표시: 센터 정보 -->
+
 	    <div class="info-box">
 	        <c:if test="${empty centerInfo}">
 	            <p style="color: red;">센터 정보를 불러올 수 없습니다.</p>
 	        </c:if>
+
 	        <p>센터 이름 : <strong>&nbsp&nbsp${centerInfo.center_name}</strong></p>
 	        <p>지역 : <strong>&nbsp&nbsp${centerInfo.city} ${centerInfo.district}</strong></p>
 	        <p>결제 금액: <strong>&nbsp&nbsp${centerInfo.price}원</strong></p>
@@ -256,12 +258,14 @@ header {
 	
 	    <!-- :흰색_확인_표시: 날짜 선택 -->
 	    <div class="section-title">📅 날짜 선택</div>
+
 	    <div class="date-selector">
 	        <input type="date" id="date-picker" name="reservationDate" required>
 	    </div>
 	
 	    <!-- :흰색_확인_표시: 시간 선택 -->
 	    <div class="section-title">🕐 시간 선택</div>
+
 	    <div class="time-selector">
 	        <button type="button" onclick="selectTime('10', this)" value="10">10:00</button>
 	        <button type="button" onclick="selectTime('11', this)" value="11">11:00</button>
@@ -281,6 +285,7 @@ header {
 	        <button id="confirm-btn" type="submit" class="confirm-btn" disabled>예약하기</button>
 	    </div>
 	</form>
+
 <script>
     // 예약하기 버튼 클릭 시 form 제출 전에 alert를 띄우는 함수
     function showReservationAlert() {
@@ -289,6 +294,7 @@ header {
         return true;
     }
 </script>
+
 </div>
 
 </body>
