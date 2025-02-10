@@ -10,6 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScheduleWithCenterDto {
+	private int reservation_id;
     private int center_id;
     private String center_name;
     private String center_address;

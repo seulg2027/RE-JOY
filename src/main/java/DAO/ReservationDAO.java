@@ -3,6 +3,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ReservationDAO {
 
 		try {
 			con = DBUtil.getConnection();
-			String sql = "SELECT C.center_id, C.center_name, C.center_address, C.price, R.reservation_time, S.start_time, S.end_time\n"
+			String sql = "SELECT R.reservation_id, C.center_id, C.center_name, C.center_address, C.price, R.reservation_time, S.start_time, S.end_time\n"
 					+ "FROM Reservation R\n" + "\tINNER JOIN Users U\n" + "\tON U.user_id = R.user_id\n"
 					+ "\tINNER JOIN Schedules S\n" + "\tON S.schedule_id = R.schedule_id\n"
 					+ "\tINNER JOIN center_info C\n" + "\tON C.center_id = R.center_id\n"
@@ -35,7 +36,7 @@ public class ReservationDAO {
 			logger.info("Executing query: {}", sql);
 
 			while (rs.next()) {
-				ScheduleWithCenterDto reservation = new ScheduleWithCenterDto(rs.getInt("center_id"),
+				ScheduleWithCenterDto reservation = new ScheduleWithCenterDto(rs.getInt("reservation_id"), rs.getInt("center_id"),
 						rs.getString("center_name"), rs.getString("center_address"), rs.getInt("price"),
 						rs.getDate("reservation_time"), rs.getInt("start_time"), rs.getInt("end_time"));
 				reservationAll.add(reservation);
@@ -92,6 +93,26 @@ public class ReservationDAO {
             pstmt.setInt(3, centerId);
             pstmt.setString(4, reservationDate);
             pstmt.executeUpdate();
+        } finally {
+            DBUtil.close(con, pstmt, null);
+        }
+    }
+    public boolean cancelReservation(int reservationId) throws SQLException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        
+        try {
+            con = DBUtil.getConnection();
+            String sql = "DELETE FROM Reservation WHERE reservation_id = ?";
+            System.out.println("Executing SQL: " + sql);
+            
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, reservationId);
+            System.out.println("Executing SQL: " + sql);
+            
+            // executeUpdate()는 영향을 받은 행(row)의 수를 반환합니다.
+            int rowsAffected = pstmt.executeUpdate();
+            return rowsAffected > 0;
         } finally {
             DBUtil.close(con, pstmt, null);
         }
