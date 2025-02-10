@@ -16,11 +16,10 @@ public class ReservationController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-    	System.out.println("###############");
+    	
         // center_id 파라미터 가져오기
         String centerIdParam = request.getParameter("center_id");
-        System.out.println(centerIdParam);
+        
         if (centerIdParam == null || centerIdParam.isEmpty()) {
             response.sendRedirect("error.jsp");
             return;
@@ -43,7 +42,8 @@ public class ReservationController extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "예약 페이지 로딩 중 오류 발생");
+            request.setAttribute("error", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 }

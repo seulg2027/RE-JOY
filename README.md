@@ -16,10 +16,13 @@
 
 기존의 취미 관련 웹 서비스들은 주로 모든 연령대를 타겟으로 하여 일반적인 정보를 제공하고 있어 5060세대 특화 서비스를 찾기 어렵다. 본 서비스는 ELK를 활용한 데이터 분석을 통해 **5060세대의 니즈를 충족시킬 수 있는 경쟁력을 가질 것**으로 예상한다.
 
+<<<<<<< Updated upstream
 ### 💰 수익화 전략
 
 기본적으로 예약 중개 서비스인만큼 사용자들이 해당 서비스를 이용하여 예약을 할 때 중간에서 수수료를 책정하여 수익을 실현할 수 있을 것으로 기대된다.
 
+=======
+>>>>>>> Stashed changes
 ## 3. Project 주제
 
 💡 기간 : `2025.02.03` ~ `2025.02.10`
@@ -40,8 +43,8 @@
 
 | Elements       | Tools                        | 설명                         |
 |----------------|------------------------------|------------------------------|
-| Database   | <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"> | 사용자, 취미 센터, 예약 정보 등의 데이터를 저장   |
-| Server   | <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=white"> <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"> | 각각 WAS 서버, 데이터베이스 서버로 사용 |
+| Database   | <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"> | 사용자, 취미 센터, 예약 정보 등 데이터 저장   |
+| Server   | <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=white"> <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"> <img src="https://img.shields.io/badge/ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=black"> | 각각 WAS 서버, 데이터베이스 서버로 사용 |
 | Data Anaysis   | <img src="https://img.shields.io/badge/elastic stack-005571?style=flat-square&logo=elasticstack&logoColor=white"> | 데이터 수집, 검색, 분석 도구 |
 | WEB System  | <img src="https://img.shields.io/badge/servlet-000000?style=flat-square&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=flat-square&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"> | 웹 서비스 개발 도구 |
 
