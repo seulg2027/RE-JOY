@@ -13,6 +13,7 @@ html, body {
 	height: auto%;
 	margin: 0;
 	padding: 0;
+	
 }
 
 body {
@@ -115,6 +116,7 @@ header {
 }
 
 .info-box p {
+
 	margin: 5px 0;
 	color: #333;
 }
@@ -221,16 +223,14 @@ header {
         </div>
 	</header>
 	<div class="container">
-		<h2>인기 취미생활</h2>
+		<h2 style ="text-align : left; margin-left : 30px">  인기 취미생활</h2>
 
 		<!-- 대시보드 출력 영역 -->
 		
 		<div class="dashboard">
 			
 				<p>
-					<iframe class="info-box"
-						src="http://192.168.1.227:5601/goto/0963d960-e514-11ef-ba83-5730c8e994f1"
-						height="400px" width="500px"></iframe>
+					<iframe class="info-box" src="http://localhost:5601/app/dashboards#/view/477e9060-e478-11ef-a84c-0fe63e4fd213?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,syncColors:!f,useMargins:!t),panels:!((embeddableConfig:(enhancements:(),hidePanelTitles:!f,savedVis:(data:(aggs:!(),searchSource:(filter:!(),query:(language:kuery,query:''))),description:'',id:'',params:(fontSize:12,markdown:'%20%EC%B7%A8%EB%AF%B8%20%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%20%EB%B3%84%20%EC%84%A0%ED%98%B8%EB%8F%84%EB%A5%BC%20%EC%8B%9C%EA%B0%81%ED%99%94%ED%95%9C%20%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C%EC%9E%85%EB%8B%88%EB%8B%A4!!%20%F0%9F%98%8A',openLinksInNewTab:!f),title:'',type:markdown,uiState:())),gridData:(h:4,i:'7f5ae121-abf1-4ab3-98da-8078c9d52f5a',w:48,x:0,y:0),panelIndex:'7f5ae121-abf1-4ab3-98da-8078c9d52f5a',title:'welcome!!',type:visualization,version:'7.17.10'),(embeddableConfig:(enhancements:()),gridData:(h:15,i:'0c255e8c-9220-440a-9672-cd06eaa8daa2',w:24,x:0,y:4),id:'45b9abb0-e474-11ef-a84c-0fe63e4fd213',panelIndex:'0c255e8c-9220-440a-9672-cd06eaa8daa2',type:lens,version:'7.17.10'),(embeddableConfig:(enhancements:()),gridData:(h:15,i:e56e7db2-9e4a-460f-a548-5b88c1f2e0c9,w:24,x:24,y:4),id:dcffac50-e473-11ef-a84c-0fe63e4fd213,panelIndex:e56e7db2-9e4a-460f-a548-5b88c1f2e0c9,type:lens,version:'7.17.10'),(embeddableConfig:(enhancements:()),gridData:(h:15,i:'55d299d0-bb96-490f-9784-45a73e9365f8',w:24,x:0,y:19),id:b28ebc20-e475-11ef-a84c-0fe63e4fd213,panelIndex:'55d299d0-bb96-490f-9784-45a73e9365f8',type:lens,version:'7.17.10'),(embeddableConfig:(enhancements:()),gridData:(h:15,i:'15ee83db-651b-407e-b5c8-23a97feea0a1',w:24,x:24,y:19),id:'788f52a0-e475-11ef-a84c-0fe63e4fd213',panelIndex:'15ee83db-651b-407e-b5c8-23a97feea0a1',type:lens,version:'7.17.10')),query:(language:kuery,query:''),tags:!(),timeRestore:!f,title:REJOY,viewMode:view)" height="1890px" width="500px"></iframe>
 				</p>
 			
 		</div>

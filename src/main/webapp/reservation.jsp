@@ -239,48 +239,56 @@ header {
 	</header>
 
 <div class="container">
-    <h2>예약하기</h2>
-    <form action="doReservation" method="post"> <!-- /doReservation 컨트롤러 호출 -->
-        <input type="hidden" name="center_id" value="${centerInfo.center_id}">
-        <input type="hidden" id="selected-time" name="reservationTime">
-
-        <!-- ✅ 센터 정보 -->
-        <div class="info-box">
-            <c:if test="${empty centerInfo}">
-                <p style="color: red;">센터 정보를 불러올 수 없습니다.</p>
-            </c:if>
-            <p>센터 이름: ${centerInfo.center_name}</p>
-            <p>지역: ${centerInfo.city} ${centerInfo.district}</p>
-            <p>결제 금액: ${centerInfo.price}원</p>
-        </div>
-
-        <!-- ✅ 날짜 선택 -->
-        <div class="section-title">날짜 선택</div>
-        <div class="date-selector">
-            <input type="date" id="date-picker" name="reservationDate" required>
-        </div>
-
-        <!-- ✅ 시간 선택 -->
-        <div class="section-title">시간 선택</div>
-        <div class="time-selector">
-            <button type="button" onclick="selectTime('10', this)" value=10>10:00</button>
-            <button type="button" onclick="selectTime('11', this)" value=11>11:00</button>
-            <button type="button" onclick="selectTime('12', this)" value=12>12:00</button>
-            <button type="button" onclick="selectTime('13', this)" value=13>13:00</button>
-            <button type="button" onclick="selectTime('14', this)" value=14>14:00</button>
-            <button type="button" onclick="selectTime('15', this)" value=15>15:00</button>
-            <button type="button" onclick="selectTime('16', this)" value=16>16:00</button>
-            <button type="button" onclick="selectTime('17', this)" value=17>17:00</button>
-            <button type="button" onclick="selectTime('18', this)" value=18>18:00</button>
-            <button type="button" onclick="selectTime('19', this)" value=19>19:00</button>
-            <button type="button" onclick="selectTime('20', this)" value=20>20:00</button>
-            <button type="button" onclick="selectTime('21', this)" value=21>21:00</button>
-        </div>
-
-        <div>
-            <button id="confirm-btn" type="submit" class="confirm-btn" disabled>예약하기</button>
-        </div>
-    </form>
+    <h2 style ="text-align : left">예약하기</h2>
+    <form action="doReservation" method="post" onsubmit="return showReservationAlert();">
+	    <input type="hidden" name="center_id" value="${centerInfo.center_id}">
+	    <input type="hidden" id="selected-time" name="reservationTime">
+	
+	    <!-- :흰색_확인_표시: 센터 정보 -->
+	    <div class="info-box">
+	        <c:if test="${empty centerInfo}">
+	            <p style="color: red;">센터 정보를 불러올 수 없습니다.</p>
+	        </c:if>
+	        <p>센터 이름 : <strong>&nbsp&nbsp${centerInfo.center_name}</strong></p>
+	        <p>지역 : <strong>&nbsp&nbsp${centerInfo.city} ${centerInfo.district}</strong></p>
+	        <p>결제 금액: <strong>&nbsp&nbsp${centerInfo.price}원</strong></p>
+	    </div>
+	
+	    <!-- :흰색_확인_표시: 날짜 선택 -->
+	    <div class="section-title">📅 날짜 선택</div>
+	    <div class="date-selector">
+	        <input type="date" id="date-picker" name="reservationDate" required>
+	    </div>
+	
+	    <!-- :흰색_확인_표시: 시간 선택 -->
+	    <div class="section-title">🕐 시간 선택</div>
+	    <div class="time-selector">
+	        <button type="button" onclick="selectTime('10', this)" value="10">10:00</button>
+	        <button type="button" onclick="selectTime('11', this)" value="11">11:00</button>
+	        <button type="button" onclick="selectTime('12', this)" value="12">12:00</button>
+	        <button type="button" onclick="selectTime('13', this)" value="13">13:00</button>
+	        <button type="button" onclick="selectTime('14', this)" value="14">14:00</button>
+	        <button type="button" onclick="selectTime('15', this)" value="15">15:00</button>
+	        <button type="button" onclick="selectTime('16', this)" value="16">16:00</button>
+	        <button type="button" onclick="selectTime('17', this)" value="17">17:00</button>
+	        <button type="button" onclick="selectTime('18', this)" value="18">18:00</button>
+	        <button type="button" onclick="selectTime('19', this)" value="19">19:00</button>
+	        <button type="button" onclick="selectTime('20', this)" value="20">20:00</button>
+	        <button type="button" onclick="selectTime('21', this)" value="21">21:00</button>
+	    </div>
+	
+	    <div>
+	        <button id="confirm-btn" type="submit" class="confirm-btn" disabled>예약하기</button>
+	    </div>
+	</form>
+<script>
+    // 예약하기 버튼 클릭 시 form 제출 전에 alert를 띄우는 함수
+    function showReservationAlert() {
+        alert('예약이 완료되었습니다!');
+        // true를 반환하면 폼 제출이 계속됩니다.
+        return true;
+    }
+</script>
 </div>
 
 </body>
