@@ -23,7 +23,7 @@ public class ReservationDAO {
 
 		try {
 			con = DBUtil.getConnection();
-			String sql = "SELECT C.center_id, C.center_name, C.center_address, C.price, S.schedule_date, S.start_time, S.end_time\n"
+			String sql = "SELECT C.center_id, C.center_name, C.center_address, C.price, R.reservation_time, S.start_time, S.end_time\n"
 					+ "FROM Reservation R\n" + "\tINNER JOIN Users U\n" + "\tON U.user_id = R.user_id\n"
 					+ "\tINNER JOIN Schedules S\n" + "\tON S.schedule_id = R.schedule_id\n"
 					+ "\tINNER JOIN center_info C\n" + "\tON C.center_id = R.center_id\n"
@@ -37,7 +37,7 @@ public class ReservationDAO {
 			while (rs.next()) {
 				ScheduleWithCenterDto reservation = new ScheduleWithCenterDto(rs.getInt("center_id"),
 						rs.getString("center_name"), rs.getString("center_address"), rs.getInt("price"),
-						rs.getDate("schedule_date"), rs.getInt("start_time"), rs.getInt("end_time"));
+						rs.getDate("reservation_time"), rs.getInt("start_time"), rs.getInt("end_time"));
 				reservationAll.add(reservation);
 			}
 		} finally {
