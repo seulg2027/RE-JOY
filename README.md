@@ -44,7 +44,7 @@
 |<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" />|<img src="./img/login.png" width="300" />|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" />|
 |:-:|:-:|:-:|
 |회원가입|로그인|센터리스트조회|
-|<img src="./img/reservation.png" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/dba1d6d5-4379-4638-8f8c-668704784da5" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" height="400"/>|
+|<img src="./img/reservation.png" width="300" height="400"/>|<img src="./img/reservationCheck.png" width="300" />|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" />|
 |예약|예약내역조회|통계조회|
 
 
