@@ -31,7 +31,7 @@
 | Database   | <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"> | 사용자, 취미 센터, 예약 정보 등의 데이터를 저장   |
 | Server   | <img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=white"> <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"> | 각각 WAS 서버, 데이터베이스 서버로 사용 |
 | Data Anaysis   | <img src="https://img.shields.io/badge/elastic stack-005571?style=flat-square&logo=elasticstack&logoColor=white"> | 데이터 수집, 검색, 분석 도구 |
-| WEB System  | <img src="https://img.shields.io/badge/servlet-000000?style=flat-square&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=flat-square&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css&logoColor=white"> | 웹 서비스 개발 도구 |
+| WEB System  | <img src="https://img.shields.io/badge/servlet-000000?style=flat-square&logo=openjdk&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=flat-square&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-663399?style=flat-square&logo=css&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"> | 웹 서비스 개발 도구 |
 
 
 
@@ -81,6 +81,13 @@ java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
 <img src="https://github.com/user-attachments/assets/3f3a74a2-4221-4f4e-b949-df2a83f99772" width="600px">
 
 ✅ 해결 : mysql.conf파일에서 max_allowed_packet=64M으로 패킷 크기 수정해봐도 해결이 안됨, 실제로는 환경 설정이 제대로 설정되있지 않아서 생긴 문제임을 확인함
+
+### 6-3. Tomcat server 실행 시 ClassLoader를 바인딩하지 못하는 오류
+
+<img src="./img/error03.png" width=700 />
+
+☑️ 문제 : Tomcat 서버 설정에서 ClassLoader가 바인딩되지 않은 문제 <br/>&emsp;&emsp;&emsp; → Tomcat이 이전 Build의 클래스 파일을 참조하고 있거나, sts 내부 Build 경로가 깨진 상태로 실행될 수 있음<br/><br/>
+✅ 해결 : Project를 workspace에서 삭제 후, 다시 import → Tomcat clean → Clean Tomcat Work directory → Project Clean → Update build.gradle → 다시 서버 실행
 
 ## 7. Team member's Review
 ### 💡 구민지
