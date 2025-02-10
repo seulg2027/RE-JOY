@@ -22,7 +22,7 @@
 /* 기본 스타일 */
 html, body {
     font-family: 'Pretendard', sans-serif;
-    height: 100%;
+    height: auto;
     margin: 0;
     padding: 0;
     background-color: #f3f4f6;

@@ -38,13 +38,17 @@
 ## 4. 기능 소개 및 구현 결과
 
 ### 🔧 주요 기능
-<img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="800" height="600"/>
+<img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="700" />
 
 ### 📢 구현 결과
-|<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/5ac732a6-adea-4ec2-ab23-316fd29e0cbb" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" height="400"/>|
+|<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" />|<img src="https://github.com/user-attachments/assets/5ac732a6-adea-4ec2-ab23-316fd29e0cbb" width="300" />|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" />|
 |:-:|:-:|:-:|
 |회원가입|로그인|센터리스트조회|
+
 |<img src="https://github.com/user-attachments/assets/5dbf255a-224f-4b5e-9546-562f6c5164f7" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/dba1d6d5-4379-4638-8f8c-668704784da5" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" height="400"/>|
+
+|<img src="" width="300" />|<img src="https://github.com/user-attachments/assets/0e04efdb-6a88-49b6-9aa5-2ecf7cc712f9" width="300" />|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" />|
+
 |예약|예약내역조회|통계조회|
 
 
@@ -93,7 +97,13 @@ END;
 
 ## 6. Trouble Shooting
 
-
+### 6-1. Servlet을 찾지 못하는 오류
+```
+심각: 서블릿 [Controller.ReservationController]을(를) 위해 할당하던 중 예외 발생
+java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
+```
+☑️ 문제 : 특정 Servlet만 Tomcat서버가 인식하지 못하는 문제 <br/><br/>
+✅ 해결 : class로 컴파일된 파일들이 생성된 `target/classes` 폴더를 확인해서 해당 class 파일이 없어서 나는 오류임을 발견 -> publish 후 class 파일 생성된 부분 확인하여 WAS 서버 실행
 
 ## 7. Team member's Review
 ### 💡 구민지
@@ -101,5 +111,11 @@ END;
 ### 💡 한정현
 
 ### 💡 이슬기
+
+    배운 점으로는 첫째로, 로컬마다 환경이 다르므로 환경설정 파일이나 build.gradle 파일을 팀원들과 합의하여
+    변경해야한다는 점이다.
+    둘째로, 이렇게 단기 프로젝트를 할 때면 ERD과 database를 처음부터 잘 짜는 게 정말 중요하다,, 라는 점이다.
+    아쉬운 점으로는 단기 프로젝트라서 기능 구현이 가장 우선이기 때문에 상대적으로 최적화나 Refactoring 할 시간이 부족해서
+    시도하기 어렵다는 점이다.
 
 ### 💡 김민성

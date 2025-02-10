@@ -2,19 +2,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>RE:JOY - 인기 취미 추천</title>
+<meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RE:JOY - 인기 취미 목록</title>
 <style>
 html, body {
-	height: 100%;
+	font-family: 'Pretendard', sans-serif;
+	height: auto%;
 	margin: 0;
 	padding: 0;
 }
 
 body {
-	font-family: Arial, sans-serif;
 	background-color: #f3f4f6;
 	text-align: center;
 	/* 가운데 정렬: 좌우는 auto, 위 여백은 0 */
@@ -205,7 +206,7 @@ header {
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
-					<a href="centerList.jsp">홈</a>
+					<a href="center?city=서울시&district=강남구&category=골프">홈</a>
 					<a href="reservationCheck">예약조회</a>
 					<a href="dashboard.jsp">통계</a>
 			</nav>

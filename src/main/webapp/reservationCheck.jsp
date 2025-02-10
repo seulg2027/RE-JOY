@@ -11,7 +11,7 @@
 <style>
 html, body {.
 	font-family: 'Pretendard', sans-serif;
-	height: 100%;
+	height: auto%;
 	margin: 0;
 	padding: 0;
 }
