@@ -2,6 +2,8 @@ build/
 .gradle/
 bin/
 bin/main/
+# 제외하지 않도록 설정
+!bin/generated-sources/annotations/
 
 gradlew
 gradlew.bat
