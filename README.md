@@ -41,6 +41,8 @@
 <img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="700" />
 
 ### 📢 구현 결과
+✔️ 5060세대들이 핸드폰으로 온라인에 자주 접속하기 때문에, 웹 뷰가 아닌 모바일 뷰로 UI를 구성하였다.
+
 |<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" />|<img src="./img/login.png" width="300" />|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" />|
 |:-:|:-:|:-:|
 |회원가입|로그인|센터리스트조회|
@@ -60,35 +62,6 @@
 | Schedules | 예약 가능 시간 정보 테이블 | 예약이 가능한 시간대를 저장하는 테이블 |
 | Reservation | 예약 정보 테이블 | 사용자가 예약한 정보를 저장하는 테이블 |
 | center_info | 취미 센터 테이블 | 취미 센터 정보들을 저장하는 테이블 |
-
-> ☑️ **Reservation** 테이블을 파티셔닝한 이유 <br/>
-: 예약 정보 테이블은 최신 기간의 정보를 자주 조회하는 테이블이고, 오래된 기간은 상대적으로 덜 조회하게 된다. 따라서, 이전의 예약정보까지 데이터를 모두 불러오게 되면 성능 상 이슈가 발생할 수 있으므로 Partitioning을 활용해 불필요한 데이터 접근 및 스캔을 최소화하도록 설계했다. <br/>
-파티셔닝을 통해 최신 예약 정보는 별도의 파티션에서 빠르게 조회되며, 이전 예약 정보는 상대적으로 덜 사용되기 때문에 주기적으로 파티션을 자동으로 관리하여 성능 저하를 방지한다.
-
-<details>
-<summary>Reservation 테이블 Partitioning 자동화</summary>
-
-```sql
-CREATE EVENT AddMonthlyPartition
-ON SCHEDULE EVERY 1 MONTH
-STARTS TIMESTAMP(CURRENT_DATE + INTERVAL 1 DAY)  -- 매달 1일 실행
-DO
-BEGIN
-    SET @next_partition = DATE_FORMAT(DATE_ADD(CURRENT_DATE, INTERVAL 1 MONTH), '%Y%m');
-    SET @next_value = YEAR(DATE_ADD(CURRENT_DATE, INTERVAL 1 MONTH)) * 100 + MONTH(DATE_ADD(CURRENT_DATE, INTERVAL 1 MONTH));
-    
-    SET @sql = CONCAT(
-        'ALTER TABLE Reservation ADD PARTITION (PARTITION p', 
-        @next_partition, ' VALUES LESS THAN (', @next_value, '))'
-    );
-    
-    PREPARE stmt FROM @sql;
-    EXECUTE stmt;
-    DEALLOCATE PREPARE stmt;
-END;
-```
-
-</details>
 
 
 ## 6. Trouble Shooting
