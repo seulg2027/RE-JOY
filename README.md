@@ -54,7 +54,7 @@
 <img src="./img/architecture.png" width="700" />
 
 ### 🔧 주요 기능
-<img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="700" />
+<img src="https://github.com/user-attachments/assets/c34b386e-ef42-4087-98b6-b0ae2bba1cca" width="800" />
 
 ### 📢 구현 결과
 ✔️ 5060세대들이 핸드폰으로 온라인에 자주 접속하기 때문에, 웹 뷰가 아닌 모바일 뷰로 UI를 구성하였다.
