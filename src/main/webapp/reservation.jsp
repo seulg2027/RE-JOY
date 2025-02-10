@@ -206,6 +206,14 @@ header {
         });
 
     });
+    
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            alert("예약이 완료되었습니다.");
+        }
+    }
+    
 </script>
 </head>
 <body>
@@ -222,7 +230,11 @@ header {
 		<h1 class="clickable"
 			onclick="window.location.href='center?city=서울시&district=강남구&category=골프';">RE:JOY</h1>
 		<div>
+			<% if ((String) session.getAttribute("userId") == null) { %>
 			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+			<% } else { %>
+			<a href="userLogout" style="color: white; text-decoration: none;">로그아웃</a>
+			<% } %>
 		</div>
 	</header>
 
