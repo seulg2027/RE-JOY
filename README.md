@@ -74,6 +74,14 @@ java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
 ☑️ 문제 : 특정 Servlet만 Tomcat서버가 인식하지 못하는 문제 <br/><br/>
 ✅ 해결 : class로 컴파일된 파일들이 생성된 `target/classes` 폴더를 확인해서 해당 class 파일이 없어서 나는 오류임을 발견 -> publish 후 class 파일 생성된 부분 확인하여 WAS 서버 실행
 
+### 6-2 회원가입 시 패킷 오류
+<img src="https://github.com/user-attachments/assets/9499a861-c3f6-43d7-bb99-3823bbaa0245" width="400px">
+
+☑️ 문제 : 회원가입 시 패킷이 크다는 오류 발생  <br/><br/>
+<img src="https://github.com/user-attachments/assets/3f3a74a2-4221-4f4e-b949-df2a83f99772" width="600px">
+
+✅ 해결 : mysql.conf파일에서 max_allowed_packet=64M으로 패킷 크기 수정해봐도 해결이 안됨, 실제로는 환경 설정이 제대로 설정되있지 않아서 생긴 문제임을 확인함
+
 ## 7. Team member's Review
 ### 💡 구민지
 ```
