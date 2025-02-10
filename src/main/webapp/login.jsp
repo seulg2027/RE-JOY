@@ -194,7 +194,7 @@ input[type="password"]:focus {
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
 				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
-					<a href="centerList.jsp">홈</a>
+					<a href="center?city=서울시&district=강남구&category=골프">홈</a>
 					<a href="reservationCheck.jsp">예약조회</a>
 					<a href="dashboard.jsp">통계</a>
 			</nav>
