@@ -12,12 +12,6 @@ CREATE TABLE Reservation (
     schedule_id int NOT NULL,
     center_id int NOT NULL,
     PRIMARY KEY (reservation_id, reservation_time)
-)
-PARTITION BY RANGE (YEAR(reservation_time) * 100 + MONTH(reservation_time)) (
-    PARTITION p202501 VALUES LESS THAN (202502),  -- 2025년 1월까지
-    PARTITION p202502 VALUES LESS THAN (202503),
-    PARTITION p202503 VALUES LESS THAN (202504),
-    PARTITION pFuture VALUES LESS THAN MAXVALUE   -- 나머지 (예비)
 );
 
 DROP TABLE IF EXISTS center_info;
