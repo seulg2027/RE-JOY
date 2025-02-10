@@ -38,13 +38,13 @@
 ## 4. 기능 소개 및 구현 결과
 
 ### 🔧 주요 기능
-<img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="800" height="600"/>
+<img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="700" />
 
 ### 📢 구현 결과
-|<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/5ac732a6-adea-4ec2-ab23-316fd29e0cbb" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" height="400"/>|
+|<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" />|<img src="https://github.com/user-attachments/assets/5ac732a6-adea-4ec2-ab23-316fd29e0cbb" width="300" />|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" />|
 |:-:|:-:|:-:|
 |회원가입|로그인|센터리스트조회|
-|<img src="" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/0e04efdb-6a88-49b6-9aa5-2ecf7cc712f9" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" height="400"/>|
+|<img src="" width="300" />|<img src="https://github.com/user-attachments/assets/0e04efdb-6a88-49b6-9aa5-2ecf7cc712f9" width="300" />|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" />|
 |예약|예약내역조회|통계조회|
 
 
