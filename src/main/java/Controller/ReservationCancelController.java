@@ -50,6 +50,6 @@ public class ReservationCancelController extends HttpServlet {
         }
         
         // 결과 메시지를 포함한 예약 조회 페이지로 포워딩
-        request.getRequestDispatcher("reservationCheck.jsp").forward(request, response);
+        response.sendRedirect("reservationCheck");
     }
 }
