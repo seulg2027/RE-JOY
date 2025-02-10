@@ -90,7 +90,7 @@ header {
 }
 
 .nav-menu.show-menu {
-	left: 450px;
+	left: 0;
 }
 
 .container {
@@ -233,7 +233,7 @@ header {
             var menu = document.getElementById("navMenu");
             menu.classList.toggle("show-menu");
         }
-    </script>
+</script>
 </head>
 <body>
 	<script type="text/javascript">

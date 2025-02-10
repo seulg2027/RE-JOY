@@ -92,7 +92,7 @@ header {
 
 /* 메뉴 열릴 때 위치 조정 (원하는 위치로 수정 가능) */
 .nav-menu.show-menu {
-	left: 450px;
+	left: 0;
 }
 
 .container {

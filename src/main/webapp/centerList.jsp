@@ -88,7 +88,7 @@ header {
 }
 
 .nav-menu.show-menu {
-	left: 450px;
+	left: 0;
 }
 
 .container {

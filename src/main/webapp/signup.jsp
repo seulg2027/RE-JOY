@@ -86,6 +86,10 @@ header {
     border-radius: 5px;
 }
 
+.nav-menu.show-menu {
+	left: 0;
+}
+
 /* ✅ 회원가입 컨테이너 */
 .container {
     margin-top: 10px;

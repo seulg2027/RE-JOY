@@ -95,6 +95,10 @@ header {
     border-radius: 5px;
 }
 
+.nav-menu.show-menu {
+	left: 0;
+}
+
 .container {
     padding: 20px;
     flex: 1;
@@ -177,6 +181,13 @@ header {
 </style>
 
 <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("show-menu");
+        }
+</script>
+
+<script>
     document.addEventListener("DOMContentLoaded", function() {
         var confirmBtn = document.getElementById("confirm-btn");
 
@@ -207,12 +218,7 @@ header {
 
     });
     
-    window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('success')) {
-            alert("예약이 완료되었습니다.");
-        }
-    }
+    
     
 </script>
 </head>
@@ -221,10 +227,9 @@ header {
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 			<nav id="navMenu" class="nav-menu">
-				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
-					<a href="center?city=서울시&district=강남구&category=골프">홈</a>
-					<a href="reservationCheck">예약조회</a>
-					<a href="dashboard.jsp">통계</a>
+				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> <a
+					href="center?city=서울시&district=강남구&category=골프">홈</a> <a
+					href="reservationCheck">예약조회</a> <a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
 		<h1 class="clickable"
