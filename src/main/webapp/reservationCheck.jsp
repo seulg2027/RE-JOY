@@ -201,7 +201,11 @@ header {
 </script>
 </head>
 <body>
-	
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+		//getReservationAll();
+	});
+</script>
 	<header>
 		<div class="menu-container">
 			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
@@ -221,7 +225,7 @@ header {
             <% } %>
         </div>
 	</header>
-		<div class="container">
+	<div class="container">
 		<h2 style="text-align: left; font-size:22px; margin-left: 20px; margin-bottom: 35px;">예약 조회</h2>
 			<!-- 예약 내역 출력 영역 -->
 			<div id="reservation-list">
@@ -249,20 +253,4 @@ header {
 	</div>
 
 </body>
-<script type="text/javascript">
-	document.addEventListener("DOMContentLoaded", function() {
-		//getReservationAll();
-	});
-
-	function getReservationAll() {
-		const xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("reservation-check").innerHTML = this.responseText;
-			}
-		};
-		xhttp.open("GET", "reservationCheck");
-		xhttp.send();
-	}
-</script>
 </html>

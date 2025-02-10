@@ -27,7 +27,7 @@ public class ReservationDAO {
 					+ "FROM Reservation R\n" + "\tINNER JOIN Users U\n" + "\tON U.user_id = R.user_id\n"
 					+ "\tINNER JOIN Schedules S\n" + "\tON S.schedule_id = R.schedule_id\n"
 					+ "\tINNER JOIN center_info C\n" + "\tON C.center_id = R.center_id\n"
-					+ "WHERE U.id = ? ORDER BY reservation_time DESC";
+					+ "WHERE U.id = ? ORDER BY R.reservation_time ASC";
         System.out.println("Executing SQL: " + sql);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
