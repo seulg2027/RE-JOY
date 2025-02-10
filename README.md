@@ -44,7 +44,7 @@
 |<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" />|<img src="./img/login.png" width="300" />|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" />|
 |:-:|:-:|:-:|
 |회원가입|로그인|센터리스트조회|
-|<img src="./img/reservation.png" width="300" height="400"/>|<img src="./img/reservationCheck.png" width="300" />|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" />|
+|<img src="./img/reservation.png" width="300"/>|<img src="./img/reservationCheck.png" width="300" />|<img src="https://github.com/user-attachments/assets/9913eb2a-5bfd-4861-b656-e23ae4ed7041" width="300" />|
 |예약|예약내역조회|통계조회|
 
 
@@ -103,7 +103,15 @@ java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
 
 ## 7. Team member's Review
 ### 💡 구민지
-
+```
+프로젝트를 진행하며 환경설정의 중요성을 다시 한번 깨달았다. STS 환경에서 발생한 에러 메시지가 실제 원인을 정확히 나타내지 않는 경우가 있었는데,    
+이는 포트 포워딩 설정 오류로 인해 발생한 문제였다. 에러 메시지에는 데이터 패킷 크기 문제로 값이 전달되지 않는다고 나왔지만, 실제 원인은 다른 곳에 있었다. 
+또한, GitHub에서 pull 작업을 수행할 때마다 톰캣 서버가 다운되어 프로젝트 진행에 어려움을 겪었고, 이를 통해 환경 설정이 얼마나 중요한지 다시 느꼈다.
+MVC 패턴을 활용해 데이터를 JSP에 출력하는 연습을 진행했다. Controller를 통해 페이지 이동을 처리하고, DAO를 사용해 데이터베이스에서 데이터를 
+가져오는 구조를 직접 설계하고 구현하며 실습할 수 있었다.
+공공데이터를 활용해 Kibana에서 시각화를 구현하기 위해 데이터를 정제하는 작업을 진행했다. 
+원하는 결과를 얻기 위해 데이터를 분석하고 가공하는 과정을 거치며 데이터 정제의 중요성을 경험했다. 
+```
 ### 💡 한정현
 
 ### 💡 이슬기
