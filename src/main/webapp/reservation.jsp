@@ -12,16 +12,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=480, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>RE:JOY - 예약하기</title>
+
 <style>
 /* 기본 스타일 */
 html, body {
+    font-family: 'Pretendard', sans-serif;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     background-color: #f3f4f6;
     text-align: center;
     width: 600px;
@@ -41,6 +44,55 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    position: relative;
+}
+
+.menu-container {
+    position: relative;
+}
+
+.menu-icon {
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #495DDD;
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav-menu a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: left;
+}
+
+.nav-menu a:hover {
+    background-color: #637AFF;
+    border-radius: 5px;
 }
 
 .container {
@@ -149,7 +201,7 @@ header {
         // ✅ 버튼에 이벤트 리스너 추가
         document.querySelectorAll(".time-selector button").forEach(button => {
             button.addEventListener("click", function() {
-                selectTime(this.innerText, this);
+                selectTime(this.value, this);
             });
         });
 
@@ -157,10 +209,22 @@ header {
 </script>
 </head>
 <body>
-
-<header>
-    <h1>RE:JOY</h1>
-</header>
+	<header>
+		<div class="menu-container">
+			<div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+			<nav id="navMenu" class="nav-menu">
+				<span class="close-btn" onclick="toggleMenu()">&#10005;</span> 
+					<a href="center?city=서울시&district=강남구&category=골프">홈</a>
+					<a href="reservationCheck">예약조회</a>
+					<a href="dashboard.jsp">통계</a>
+			</nav>
+		</div>
+		<h1 class="clickable"
+			onclick="window.location.href='center?city=서울시&district=강남구&category=골프';">RE:JOY</h1>
+		<div>
+			<a href="login.jsp" style="color: white; text-decoration: none;">로그인</a>
+		</div>
+	</header>
 
 <div class="container">
     <h2>예약하기</h2>
@@ -187,18 +251,18 @@ header {
         <!-- ✅ 시간 선택 -->
         <div class="section-title">시간 선택</div>
         <div class="time-selector">
-            <button type="button" onclick="selectTime('10', this)">10</button>
-            <button type="button" onclick="selectTime('11', this)">11</button>
-            <button type="button" onclick="selectTime('12', this)">12</button>
-            <button type="button" onclick="selectTime('13', this)">13</button>
-            <button type="button" onclick="selectTime('14', this)">14</button>
-            <button type="button" onclick="selectTime('15', this)">15</button>
-            <button type="button" onclick="selectTime('16', this)">16</button>
-            <button type="button" onclick="selectTime('17', this)">17</button>
-            <button type="button" onclick="selectTime('18', this)">18</button>
-            <button type="button" onclick="selectTime('19', this)">19</button>
-            <button type="button" onclick="selectTime('20', this)">20</button>
-            <button type="button" onclick="selectTime('21', this)">21</button>
+            <button type="button" onclick="selectTime('10', this)" value=10>10:00</button>
+            <button type="button" onclick="selectTime('11', this)" value=11>11:00</button>
+            <button type="button" onclick="selectTime('12', this)" value=12>12:00</button>
+            <button type="button" onclick="selectTime('13', this)" value=13>13:00</button>
+            <button type="button" onclick="selectTime('14', this)" value=14>14:00</button>
+            <button type="button" onclick="selectTime('15', this)" value=15>15:00</button>
+            <button type="button" onclick="selectTime('16', this)" value=16>16:00</button>
+            <button type="button" onclick="selectTime('17', this)" value=17>17:00</button>
+            <button type="button" onclick="selectTime('18', this)" value=18>18:00</button>
+            <button type="button" onclick="selectTime('19', this)" value=19>19:00</button>
+            <button type="button" onclick="selectTime('20', this)" value=20>20:00</button>
+            <button type="button" onclick="selectTime('21', this)" value=21>21:00</button>
         </div>
 
         <div>

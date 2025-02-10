@@ -154,7 +154,7 @@ header {
 					<a href="dashboard.jsp">통계</a>
 			</nav>
 		</div>
-		<h1 class="clickable" onclick="window.location.href='centerList.jsp';">RE:JOY</h1>
+		<h1 class="clickable" onclick="window.location.href='center?city=서울시&district=강남구&category=골프';">RE:JOY</h1>
 		<div>
 			<div>
             <% if ((String) session.getAttribute("userId") == null) { %>
