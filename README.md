@@ -93,7 +93,13 @@ END;
 
 ## 6. Trouble Shooting
 
-
+### 6-1. Servlet을 찾지 못하는 오류
+```
+심각: 서블릿 [Controller.ReservationController]을(를) 위해 할당하던 중 예외 발생
+java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
+```
+☑️ 문제 : 특정 Servlet만 Tomcat서버가 인식하지 못하는 문제 <br/><br/>
+✅ 해결 : class로 컴파일된 파일들이 생성된 `target/classes` 폴더를 확인해서 해당 class 파일이 없어서 나는 오류임을 발견 -> publish 후 class 파일 생성된 부분 확인하여 WAS 서버 실행
 
 ## 7. Team member's Review
 ### 💡 구민지
@@ -101,5 +107,11 @@ END;
 ### 💡 한정현
 
 ### 💡 이슬기
+
+    배운 점으로는 첫째로, 로컬마다 환경이 다르므로 환경설정 파일이나 build.gradle 파일을 팀원들과 합의하여
+    변경해야한다는 점이다.
+    둘째로, 이렇게 단기 프로젝트를 할 때면 ERD과 database를 처음부터 잘 짜는 게 정말 중요하다,, 라는 점이다.
+    아쉬운 점으로는 단기 프로젝트라서 기능 구현이 가장 우선이기 때문에 상대적으로 최적화나 Refactoring 할 시간이 부족해서
+    시도하기 어렵다는 점이다.
 
 ### 💡 김민성
