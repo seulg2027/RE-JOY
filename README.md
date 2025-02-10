@@ -6,8 +6,17 @@
 |:-:|:-:|:-:|:-:|
 |김민성<br/>[@minsung159357](https://github.com/minsung159357)|SeulGi_LEE<br/>[@seulg2027](https://github.com/seulg2027)|HanJH<br/>[@letsgojh0810](https://github.com/letsgojh0810)|구민지<br/>[@minjee83](https://github.com/minjee83)|
 
+## 2. 시장 분석 및 사업 개요
 
-## 2. Project 개요 및 주제
+### 👬 타겟 시장
+
+5060세대의 비중이 높아지면서, 실버 세대가 여가 시간을 효율적으로 활용할 수 있는 서비스를 요구하는 주요 사용자층으로 부상하고 있다. 특히, 다양한 취미 활동을 통해 사회적 관계를 확장하고, **개인의 삶의 질을 향상시키고자 하는 욕구**가 커지고 있다고 분석했다.
+
+### 💬 경쟁 분석
+
+기존의 취미 관련 웹 서비스들은 주로 모든 연령대를 타겟으로 하여 일반적인 정보를 제공하고 있어 5060세대 특화 서비스를 찾기 어렵다. 본 서비스는 ELK를 활용한 데이터 분석을 통해 **5060세대의 니즈를 충족시킬 수 있는 경쟁력을 가질 것**으로 예상한다.
+
+## 3. Project 주제
 
 💡 기간 : `2025.02.03` ~ `2025.02.10`
 
@@ -16,15 +25,14 @@
     RE-JOY 의미 : "다시(Re) 즐기자(Joy)!" 🎉
     - 5060 세대가 인생 2막을 즐길 수 있는 취미 예약 플랫폼
 
-💡 개요 : 본 프로젝트는 `Servlet`, `jsp`와 `Apache Tomcat`을 사용하여 사용자들에게 중단되지 않는 편리한 웹 서비스를 제공하는 것을 목표로 한다. 5060세대들이 선호하는 취미 종류를 `ELK`를 활용하여 분석하고, 선호도가 높은 취미를 검색 시 우선으로 노출시킴으로써 사용자 친화적인 서비스를 제공한다. 아울러, 통계 데이터를 시각화하여 5060세대의 취미 선호도를 한눈에 확인할 수 있도록 구성하였다.
+💡 개요 : 본 프로젝트는 `Servlet`, `jsp`와 `Apache Tomcat`을 사용하여 사용자들에게 중단되지 않는 편리한 웹 서비스를 제공하는 것을 목표로 한다. 5060세대들이 선호하는 취미 종류를 `ELK(Elasticsearch, Logstash, Kibana) Stack`을 활용하여 분석하고, 선호도가 높은 취미를 검색 시 우선으로 노출시킴으로써 사용자 친화적인 서비스를 제공한다. 아울러, 통계 데이터를 시각화하여 5060세대의 취미 선호도를 한눈에 확인할 수 있도록 구성하였다.
 
 💡 주제 : 5060의 즐거움을 위한 취미 통합 예약 사이트
 
 💡 데이터 출처 : [취미 선호도 데이터](https://www.kosis.kr/index/index.do)를 CSV 파일로 받아서 연령대별, 성별별로 선호도 분석 📈
 
 
-
-## 3. Stack & Tools
+## 4. Stack & Tools
 
 | Elements       | Tools                        | 설명                         |
 |----------------|------------------------------|------------------------------|
@@ -35,7 +43,11 @@
 
 
 
-## 4. 기능 소개 및 구현 결과
+## 5. 기능 소개 및 구현 결과
+
+### ⚒️ 아키텍처 소개
+
+<img src="./img/architecture.png" width="700" />
 
 ### 🔧 주요 기능
 <img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="700" />
@@ -50,7 +62,7 @@
 |예약|예약내역조회|통계조회|
 
 
-## 5. 데이터베이스
+## 6. 데이터베이스
 
 ![image](https://github.com/user-attachments/assets/260e6913-cadf-45dd-ae09-db3ece823525)
 
@@ -64,9 +76,9 @@
 | center_info | 취미 센터 테이블 | 취미 센터 정보들을 저장하는 테이블 |
 
 
-## 6. Trouble Shooting
+## 7. Trouble Shooting
 
-### 6-1. Servlet을 찾지 못하는 오류
+### 7-1. Servlet을 찾지 못하는 오류
 ```
 심각: 서블릿 [Controller.ReservationController]을(를) 위해 할당하던 중 예외 발생
 java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
@@ -74,7 +86,7 @@ java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
 ☑️ 문제 : 특정 Servlet만 Tomcat서버가 인식하지 못하는 문제 <br/><br/>
 ✅ 해결 : class로 컴파일된 파일들이 생성된 `target/classes` 폴더를 확인해서 해당 class 파일이 없어서 나는 오류임을 발견 -> publish 후 class 파일 생성된 부분 확인하여 WAS 서버 실행
 
-### 6-2 회원가입 시 패킷 오류
+### 7-2. 회원가입 시 패킷 오류
 <img src="https://github.com/user-attachments/assets/9499a861-c3f6-43d7-bb99-3823bbaa0245" width="400px">
 
 ☑️ 문제 : 회원가입 시 패킷이 크다는 오류 발생  <br/><br/>
@@ -82,14 +94,14 @@ java.lang.ClassNotFoundException: javax.servlet.http.HttpServlet
 
 ✅ 해결 : mysql.conf파일에서 max_allowed_packet=64M으로 패킷 크기 수정해봐도 해결이 안됨, 실제로는 환경 설정이 제대로 설정되있지 않아서 생긴 문제임을 확인함
 
-### 6-3. Tomcat server 실행 시 ClassLoader를 바인딩하지 못하는 오류
+### 7-3. Tomcat server 실행 시 ClassLoader를 바인딩하지 못하는 오류
 
 <img src="./img/error03.png" width=700 />
 
 ☑️ 문제 : Tomcat 서버 설정에서 ClassLoader가 바인딩되지 않은 문제 <br/>&emsp;&emsp;&emsp; → Tomcat이 이전 Build의 클래스 파일을 참조하고 있거나, sts 내부 Build 경로가 깨진 상태로 실행될 수 있음<br/><br/>
 ✅ 해결 : Project를 workspace에서 삭제 후, 다시 import → Tomcat clean → Clean Tomcat Work directory → Project Clean → Update build.gradle → 다시 서버 실행
 
-## 7. Team member's Review
+## 8. Team member's Review
 ### 💡 구민지
 ```
 프로젝트를 진행하며 환경설정의 중요성을 다시 한번 깨달았다. STS 환경에서 발생한 에러 메시지가 실제 원인을 정확히 나타내지 않는 경우가 있었는데,    
@@ -110,11 +122,12 @@ JSP와 Servlet을 사용하여 웹 프로젝트를 하면서 데이터 이동과
 
 ### 💡 이슬기
 ```
-    배운 점으로는 첫째로, 로컬마다 환경이 다르므로 환경설정 파일이나 build.gradle 파일을 팀원들과 합의하여
-    변경해야한다는 점이다.
-    둘째로, 이렇게 단기 프로젝트를 할 때면 ERD과 database를 처음부터 잘 짜는 게 정말 중요하다,, 라는 점이다.
-    아쉬운 점으로는 단기 프로젝트라서 기능 구현이 가장 우선이기 때문에 상대적으로 최적화나 Refactoring 할 시간이 부족해서
-    시도하기 어렵다는 점이다.
+배운 점으로는 첫째로, 로컬마다 환경이 다르므로 환경설정 파일이나 build.gradle 파일을 팀원들과 합의하여
+변경해야한다는 점이다.
+둘째로, 이렇게 단기 프로젝트를 할 때면 ERD과 database를 처음부터 잘 짜는 게 정말 중요하다,, 라는 점이다.
+아쉬운 점으로는 단기 프로젝트라서 기능 구현이 가장 우선이기 때문에 상대적으로
+최적화나 Refactoring 할 시간이 부족해서
+시도하기 어렵다는 점이다.
 ```
 
 ### 💡 김민성
