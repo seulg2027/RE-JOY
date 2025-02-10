@@ -38,19 +38,19 @@
 ## 4. 기능 소개 및 구현 결과
 
 ### 🔧 주요 기능
-<img src="https://github.com/user-attachments/assets/59554f8e-5f3a-4a31-a1b9-ade4bcf9e29b" width="600" height="350"/>
+<img src="https://github.com/user-attachments/assets/814743c6-8b5e-417f-a5c1-47a357396c33" width="800" height="600"/>
 
 ### 📢 구현 결과
 |<img src="https://github.com/user-attachments/assets/92a9eb16-a94b-417f-ba4f-d410bd626d22" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/5ac732a6-adea-4ec2-ab23-316fd29e0cbb" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/b9987f18-a57c-4cf1-8652-8f651152862d" width="300" height="400"/>|
 |:-:|:-:|:-:|
 |회원가입|로그인|센터리스트조회|
-||<img src="https://github.com/user-attachments/assets/6d0a9fc6-42cf-4164-ba7e-56f84ddebc16" width="300" height="400"/>|
-|예약|예약내역조회|
+|<img src="" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/0e04efdb-6a88-49b6-9aa5-2ecf7cc712f9" width="300" height="400"/>|<img src="https://github.com/user-attachments/assets/25eb16a5-3b07-4ce0-900d-c973cf33f86d" width="300" height="400"/>|
+|예약|예약내역조회|통계조회|
 
 
 ## 5. 데이터베이스
 
-![image](https://github.com/user-attachments/assets/1947738e-2a37-4c29-8fbc-7eddf260b600)
+![image](https://github.com/user-attachments/assets/260e6913-cadf-45dd-ae09-db3ece823525)
 
 4개의 테이블을 만들어 데이터베이스를 제작하였다. [SQL DDL문 보러가기](./sql/ddl.sql)
 
