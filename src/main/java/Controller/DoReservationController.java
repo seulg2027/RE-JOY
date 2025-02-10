@@ -45,8 +45,9 @@ public class DoReservationController extends HttpServlet {
             reservationDAO.bookReservation(userId, centerId, reservationDate, reservationTime);
 
             // 성공 메시지 전달 후 페이지 이동
-            //alert()
-            request.getRequestDispatcher("reservationCheck.jsp").forward(request, response);
+            request.setAttribute("success", "예약이 완료되었습니다.");
+            // request.getRequestDispatcher("reservationCheck").forward(request, response);
+            response.sendRedirect("reservationCheck");
 
         } catch (Exception e) {
             e.printStackTrace();
